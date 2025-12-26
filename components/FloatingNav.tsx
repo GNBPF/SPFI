@@ -254,6 +254,13 @@ const FloatingNav: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
+            onClick={(e) => {
+              // If already on home page, scroll to top smoothly
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img src="/SPFILogo.png" alt="SPFI Logo" className="w-12 h-auto sm:w-14 md:w-16 lg:w-[70px]" />

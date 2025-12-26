@@ -627,34 +627,34 @@ const Home: React.FC = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeInUp}
-              className="text-center lg:text-left"
+              className="w-full"
             >
-              <h3 className="text-xl md:text-2xl font-semibold text-cream mb-4 md:mb-6">Event Snapshot</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-cream mb-4 md:mb-6 text-center lg:text-left">Event Snapshot</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20">
+                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
                   <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">location_on</span>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Venue</p>
                     <p className="text-cream font-medium text-sm md:text-base">DoubleTree by Hilton, Dubai</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20">
+                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
                   <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">event</span>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Dates</p>
                     <p className="text-cream font-medium text-sm md:text-base">16–17 May 2026</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20">
+                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
                   <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">dashboard</span>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Format</p>
                     <p className="text-cream font-medium text-sm md:text-base">Curated Exhibition • Investor Consultations • Finance Desks</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20">
+                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
                   <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">vpn_key</span>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Access</p>
                     <p className="text-cream font-medium text-sm md:text-base">By Registration / Invitation</p>
                   </div>
