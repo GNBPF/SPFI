@@ -256,7 +256,7 @@ const FloatingNav: React.FC = () => {
             to="/" 
             className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
-            <img src="/SPFILogo.png" alt="SPFI Logo" width={70} height={60} />
+            <img src="/SPFILogo.png" alt="SPFI Logo" className="w-12 h-auto sm:w-14 md:w-16 lg:w-[70px]" />
       </Link>
       
           {/* Desktop Navigation Links */}

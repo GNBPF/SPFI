@@ -33,12 +33,12 @@ const InvestmentInsights: React.FC = () => {
         <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto w-full">
           
           
-          <h1 className="text-cream text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-6 md:mb-8 drop-shadow-2xl">
+          <h1 className="text-cream text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-6 md:mb-8" style={{ textShadow: '0 6px 30px rgba(0, 0, 0, 0.7), 0 3px 15px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3)' }}>
             Bridging Legacy <br/>
-            <span className="text-accent italic font-serif font-light">&amp;</span> Future
+            <span className="text-accent italic font-serif font-light" style={{ textShadow: '0 6px 30px rgba(0, 0, 0, 0.8), 0 3px 15px rgba(0, 0, 0, 0.6)' }}>&amp;</span> Future
           </h1>
           
-          <p className="text-cream/90 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mb-10 md:mb-12 px-4 drop-shadow-lg">
+          <p className="text-cream/90 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mb-10 md:mb-12 px-4" style={{ textShadow: '0 3px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
             An exclusive gathering for the global Indian elite. Discover high-yield legacy assets amidst the luxury of Dubai.
           </p>
           
@@ -62,9 +62,9 @@ const InvestmentInsights: React.FC = () => {
             <div className="flex-1 space-y-6 md:space-y-8">
               <div>
                 <span className="text-accent font-bold tracking-widest uppercase text-xs mb-3 block">Essential Information</span>
-                <h2 className="text-primary text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight mb-6">
-                  Event <span className="text-accent font-bold font-display italic">Passport</span>
-                </h2>
+            <h2 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight mb-4 sm:mb-6">
+              Event <span className="text-accent font-bold font-display italic">Passport</span>
+            </h2>
               </div>
               <p className="text-primary/80 text-base md:text-lg leading-relaxed border-l-2 border-accent/30 pl-4 md:pl-6">
                 Join a select group of high-net-worth investors and industry titans for a day of insight, connection, and opportunity.
@@ -127,7 +127,7 @@ const InvestmentInsights: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full relative z-10 py-8">
           <div className="text-center mb-12 md:mb-16">
             <span className="text-accent font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Curated Itinerary</span>
-            <h2 className="text-primary text-3xl md:text-5xl font-serif font-light">The Experience</h2>
+            <h2 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-light">The Experience</h2>
           </div>
           <div className="relative px-4">
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent transform md:-translate-x-1/2"></div>
@@ -256,11 +256,11 @@ const InvestmentInsights: React.FC = () => {
               <span className="material-symbols-outlined text-accent text-xl">analytics</span>
               <span className="text-xs font-bold uppercase tracking-widest text-accent">Market Intelligence</span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cream leading-tight tracking-tight" style={{ textShadow: '0 3px 15px rgba(0, 0, 0, 0.5)' }}>
               The India Advantage: <br className="hidden md:block"/>
-              <span className="text-white/90">Financial Forecasts</span>
+              <span className="text-white/90" style={{ textShadow: '0 3px 15px rgba(0, 0, 0, 0.6)' }}>Financial Forecasts</span>
             </h1>
-            <p className="mt-4 text-cream/80 text-base md:text-lg max-w-xl font-light leading-relaxed">
+            <p className="mt-4 text-cream/80 text-sm sm:text-base md:text-lg max-w-xl font-light leading-relaxed" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.4)' }}>
                 An in-depth analysis of predicted occupancy, currency leverage, and asset yield for luxury Indian real estate.
             </p>
           </div>
@@ -279,20 +279,20 @@ const InvestmentInsights: React.FC = () => {
         </div>
 
         {/* Top KPI Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           
           {/* KPI 1 */}
-          <div className="animate-fade-in-up [animation-delay:100ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
-            <div className="flex justify-between items-start mb-4">
+          <div className="animate-fade-in-up [animation-delay:100ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
+            <div className="flex justify-between items-start mb-3 sm:mb-4">
               <div className="p-2 bg-accent/20 rounded-lg text-accent">
-                <span className="material-symbols-outlined">real_estate_agent</span>
+                <span className="material-symbols-outlined text-lg sm:text-xl">real_estate_agent</span>
               </div>
-              <span className="text-[#4ADE80] text-sm font-bold bg-[#4ADE80]/10 px-2 py-1 rounded border border-[#4ADE80]/20">+1.2% vs Global</span>
+              <span className="text-[#4ADE80] text-[10px] sm:text-xs font-bold bg-[#4ADE80]/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-[#4ADE80]/20">+1.2% vs Global</span>
             </div>
-            <p className="text-text-muted text-sm font-medium uppercase tracking-wide">Projected Annual Yield</p>
+            <p className="text-text-muted text-xs sm:text-sm font-medium uppercase tracking-wide">Projected Annual Yield</p>
             <div className="flex items-baseline gap-2 mt-2">
-              <h3 className="text-4xl font-bold text-accent tracking-tight">8.5%</h3>
-              <span className="text-xs text-cream/70">Net ROI</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-accent tracking-tight">8.5%</h3>
+              <span className="text-[10px] sm:text-xs text-cream/70">Net ROI</span>
             </div>
             <div className="w-full bg-white/10 h-1.5 rounded-full mt-5 overflow-hidden">
               <div className="bg-accent h-full rounded-full w-[85%] group-hover:w-[88%] transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
@@ -300,17 +300,17 @@ const InvestmentInsights: React.FC = () => {
           </div>
 
           {/* KPI 2 */}
-          <div className="animate-fade-in-up [animation-delay:200ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
-            <div className="flex justify-between items-start mb-4">
+          <div className="animate-fade-in-up [animation-delay:200ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
+            <div className="flex justify-between items-start mb-3 sm:mb-4">
               <div className="p-2 bg-accent/20 rounded-lg text-accent">
-                <span className="material-symbols-outlined">currency_exchange</span>
+                <span className="material-symbols-outlined text-lg sm:text-xl">currency_exchange</span>
               </div>
-              <span className="text-[#4ADE80] text-sm font-bold bg-[#4ADE80]/10 px-2 py-1 rounded border border-[#4ADE80]/20">+22.4% vs 2020</span>
+              <span className="text-[#4ADE80] text-[10px] sm:text-xs font-bold bg-[#4ADE80]/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-[#4ADE80]/20">+22.4% vs 2020</span>
             </div>
-            <p className="text-text-muted text-sm font-medium uppercase tracking-wide">USD vs INR Appreciation</p>
+            <p className="text-text-muted text-xs sm:text-sm font-medium uppercase tracking-wide">USD vs INR Appreciation</p>
             <div className="flex items-baseline gap-2 mt-2">
-              <h3 className="text-4xl font-bold text-accent tracking-tight">+22.4%</h3>
-              <span className="text-xs text-cream/70">Buying Power</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-accent tracking-tight">+22.4%</h3>
+              <span className="text-[10px] sm:text-xs text-cream/70">Buying Power</span>
             </div>
             <div className="w-full bg-white/10 h-1.5 rounded-full mt-5 overflow-hidden">
               <div className="bg-accent h-full rounded-full w-[65%] group-hover:w-[70%] transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
@@ -318,19 +318,19 @@ const InvestmentInsights: React.FC = () => {
           </div>
 
           {/* KPI 3 */}
-          <div className="animate-fade-in-up [animation-delay:300ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
-            <div className="flex justify-between items-start mb-4">
+          <div className="animate-fade-in-up [animation-delay:300ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
+            <div className="flex justify-between items-start mb-3 sm:mb-4">
               <div className="p-2 bg-accent/20 rounded-lg text-accent">
-                <span className="material-symbols-outlined">bed</span>
+                <span className="material-symbols-outlined text-lg sm:text-xl">bed</span>
               </div>
-              <span className="text-[#4ADE80] text-sm font-bold bg-[#4ADE80]/10 px-2 py-1 rounded border border-[#4ADE80]/20">+5% YoY</span>
+              <span className="text-[#4ADE80] text-[10px] sm:text-xs font-bold bg-[#4ADE80]/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-[#4ADE80]/20">+5% YoY</span>
             </div>
-            <p className="text-text-muted text-sm font-medium uppercase tracking-wide">Peak Season Occupancy</p>
+            <p className="text-text-muted text-xs sm:text-sm font-medium uppercase tracking-wide">Peak Season Occupancy</p>
             <div className="flex items-baseline gap-2 mt-2">
-              <h3 className="text-4xl font-bold text-accent tracking-tight">94%</h3>
-              <span className="text-xs text-cream/70">Dec - Feb</span>
+              <h3 className="text-3xl sm:text-4xl font-bold text-accent tracking-tight">94%</h3>
+              <span className="text-[10px] sm:text-xs text-cream/70">Dec - Feb</span>
             </div>
-            <div className="w-full bg-white/10 h-1.5 rounded-full mt-5 overflow-hidden">
+            <div className="w-full bg-white/10 h-1.5 rounded-full mt-4 sm:mt-5 overflow-hidden">
               <div className="bg-accent h-full rounded-full w-[94%] group-hover:w-[96%] transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
             </div>
           </div>

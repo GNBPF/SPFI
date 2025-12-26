@@ -22,7 +22,14 @@ const AppleHeroGSAP: React.FC = () => {
       gsap.set(".s2-scene", { opacity: 0, zIndex: 2 });
       gsap.set(".s3-scene", { opacity: 0, zIndex: 1 });
       
-      // Scene 1 has no text
+      // Scene 1 text - start visible since it's the first scene
+      gsap.set(".s1-text", { 
+        opacity: 1, 
+        y: 0, 
+        filter: "blur(0px)",
+        immediateRender: true,
+        force3D: true
+      });
       gsap.set(".s2-text", { opacity: 0, y: 80, filter: "blur(20px)" });
       gsap.set(".s3-text", { opacity: 0, y: 80, filter: "blur(20px)" });
       
@@ -102,7 +109,14 @@ const AppleHeroGSAP: React.FC = () => {
       /* ----------------------------------
          SCENE 1 FULL
       ---------------------------------- */
+      // Ensure text stays visible throughout Scene 1
       tl.addLabel("scene1", 0);
+      tl.set(".s1-text", {
+        y: 0,
+        opacity: 1,
+        filter: "blur(0px)",
+        immediateRender: true,
+      }, 0);
       tl.to({}, { duration: 0.30 });
 
       /* ----------------------------------
@@ -111,6 +125,15 @@ const AppleHeroGSAP: React.FC = () => {
       
       // Black fade layer during transition
       tl.to(".fade-layer", { opacity: 0.35, duration: 0.05 }, "<");
+      
+      // Fade out Scene 1 text
+      tl.to(".s1-text", {
+        y: -60,
+        opacity: 0,
+        filter: "blur(15px)",
+        duration: 0.10,
+        ease: "power3.out",
+      }, "<");
       
       // Smooth fade out Scene 1
       tl.to(".s1-scene", {
@@ -266,12 +289,29 @@ const AppleHeroGSAP: React.FC = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/Hero/screen1.png')",
+              backgroundImage: "url('/Hero/screen1.webp')",
             }}
           />
-          <div className="absolute inset-0 bg-black/40" />
-
-          {/* Scene 1 - No text, just image */}
+          <div className="absolute inset-0 bg-black/40 z-0" />
+          <div className="relative z-20 flex h-full items-center justify-center">
+            <div className="s1-text text-center max-w-5xl px-6" style={{ opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light italic text-cream leading-tight mb-6" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)' }}>
+                Spectrum Property
+                <br />
+                <span className="not-italic text-accent font-medium" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
+                  Festival India
+                </span>
+              </h1>
+              <p className="text-lg md:text-xl lg:text-2xl font-light text-cream/95 mb-4 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3)' }}>
+                16–17 May 2026 · Dubai
+              </p>
+              <p className="text-base md:text-lg text-cream/90 max-w-2xl mx-auto leading-relaxed" style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3)' }}>
+                Calling all NRIs in Dubai: Discover India's finest real estate opportunities. 
+                <br className="hidden md:block" />
+                Where heritage meets high-yield returns.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* ================= SCENE 2 ================= */}
@@ -286,14 +326,14 @@ const AppleHeroGSAP: React.FC = () => {
 
           <div className="relative z-10 flex h-full items-center justify-center">
             <div className="s2-text opacity-0 text-center max-w-4xl px-6">
-              <h1 className="text-5xl md:text-7xl font-light italic text-cream">
+              <h1 className="text-5xl md:text-7xl font-light italic text-cream" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)' }}>
                 Spectrum Property
                 <br />
-                <span className="not-italic text-accent">
+                <span className="not-italic text-accent" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
                   Festival India
                 </span>
               </h1>
-              <p className="mt-6 text-sm tracking-wide text-cream/90">
+              <p className="mt-6 text-sm tracking-wide text-cream/90" style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3)' }}>
                 Where Indian Real Estate Meets Global Capital
                 <br />16–17 May 2026 · Dubai
               </p>
@@ -313,14 +353,14 @@ const AppleHeroGSAP: React.FC = () => {
 
           <div className="relative z-10 flex h-full items-center justify-center">
             <div className="s3-text opacity-0 text-center max-w-4xl px-6">
-              <h1 className="text-4xl md:text-6xl font-light">
+              <h1 className="text-4xl md:text-6xl font-light" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
                 Experience the
                 <br />
-                <span className="italic font-medium">
+                <span className="italic font-medium" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0, 0, 0, 0.5)' }}>
                   Difference
                 </span>
               </h1>
-              <p className="mt-6 max-w-xl mx-auto text-white/80">
+              <p className="mt-6 max-w-xl mx-auto text-white/80" style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 0, 0, 0.4)' }}>
                 Discover legacy estates and high-yield Indian assets curated
                 for global investors.
               </p>
