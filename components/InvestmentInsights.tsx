@@ -1,36 +1,275 @@
 import React from 'react';
+import Footer from './Footer';
 
 const InvestmentInsights: React.FC = () => {
   return (
-    <div className="bg-primary text-cream antialiased min-h-screen flex flex-col selection:bg-accent selection:text-white pt-20 font-public">
+    <div className="bg-primary text-cream antialiased min-h-screen flex flex-col selection:bg-accent selection:text-white font-public overflow-x-hidden w-full">
       
       {/* Background Grain Effect */}
-      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-15 mix-blend-overlay"
-           style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAydGDNmBQ8Du2-oJnoLhAbTuf3C4vfquyrljfq06AN8KqBNBwEMLCW8vqZ97UBFdaWOFZwJSFJoSvgBSG662-70dWtT1shq0Ci2UXXbmCAqGsOSOAnO8GYthXDL0X6eiJM_7Tsl_wGo0xMtc1wL2CEhfyCJNdGfpU8OVbJajIye1jRXV_apVX0Rk8xQVXf57qNwFJVX6DvtwTT4UCI0QqxIh5VtrK4RHw8dZnaYS_wMxWP0rgkmfH7gAKlB_OOAZWQUKAmMtg1BkWZ')" }}>
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-[0.015] mix-blend-overlay"
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
 
-      <main className="relative z-10 flex-grow py-12 px-6 lg:px-12 max-w-[1280px] mx-auto w-full">
+      {/* Floating Concierge Button */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <button className="group flex items-center justify-center gap-2 h-14 w-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] hover:scale-105 transition-all duration-300 hover:w-auto hover:px-6 overflow-hidden">
+          <span className="material-symbols-outlined text-primary text-2xl">support_agent</span>
+          <span className="max-w-0 overflow-hidden whitespace-nowrap text-primary font-bold group-hover:max-w-xs transition-all duration-300 text-sm">Concierge</span>
+        </button>
+      </div>
+
+      {/* Hero Section - Dubai Edition */}
+      <section className="relative w-full min-h-screen flex items-center justify-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 overflow-hidden">
+        {/* Background Image with Subtle Darkening */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+            style={{ backgroundImage: "url('/page2.webp')" }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto w-full">
+          
+          
+          <h1 className="text-cream text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-6 md:mb-8 drop-shadow-2xl">
+            Bridging Legacy <br/>
+            <span className="text-accent italic font-serif font-light">&amp;</span> Future
+          </h1>
+          
+          <p className="text-cream/90 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mb-10 md:mb-12 px-4 drop-shadow-lg">
+            An exclusive gathering for the global Indian elite. Discover high-yield legacy assets amidst the luxury of Dubai.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto justify-center">
+            <button className="group flex items-center justify-center h-12 sm:h-14 px-8 sm:px-10 bg-accent text-primary text-sm sm:text-base font-bold rounded-lg shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:bg-[#d4b06d] hover:shadow-[0_0_35px_rgba(197,160,89,0.5)] transition-all transform hover:-translate-y-1 active:translate-y-0 tracking-wide uppercase">
+              <span>Request Access</span>
+              <span className="material-symbols-outlined text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+            <button className="flex items-center justify-center h-12 sm:h-14 px-8 sm:px-10 border-2 border-cream/30 bg-white/10 backdrop-blur-md text-cream text-sm sm:text-base font-medium rounded-lg hover:bg-white/20 hover:border-cream/50 transition-all tracking-wide uppercase">
+              View Showreel
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Event Passport Section */}
+      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 bg-cream relative overflow-hidden transition-colors duration-500">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto w-full relative z-10 py-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            <div className="flex-1 space-y-6 md:space-y-8">
+              <div>
+                <span className="text-accent font-bold tracking-widest uppercase text-xs mb-3 block">Essential Information</span>
+                <h2 className="text-primary text-3xl md:text-4xl lg:text-5xl font-serif font-light tracking-tight mb-6">
+                  Event <span className="text-accent font-bold font-display italic">Passport</span>
+                </h2>
+              </div>
+              <p className="text-primary/80 text-base md:text-lg leading-relaxed border-l-2 border-accent/30 pl-4 md:pl-6">
+                Join a select group of high-net-worth investors and industry titans for a day of insight, connection, and opportunity.
+              </p>
+              <div className="relative rounded-xl overflow-hidden border border-accent/20 shadow-2xl">
+                <div className="absolute inset-0 bg-accent/10 mix-blend-overlay z-10 pointer-events-none"></div>
+                <img 
+                  alt="Luxury hotel lobby with elegant design" 
+                  className="w-full h-64 md:h-80 object-cover opacity-90" 
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8hquneNarorA41FraCg0MUaJf4O7R1hcCzSor37DgeQv8dTRkvzOTVK8EFN2Ip-OawwJOyEKszcD2aVBinsxvcCBVvNTjeVa7oVRZ6m5rrFqAsGy9v1sqbUAB2cCLxlyUlYYRk2yQ_fKe6_FkbPKqjcUb0LBgNdcUIYl8EDgrfQgCFXVKmyhYugkvPyPE9fh42xBpoXDPp3jvjg4LF1VIaa8dpj0KW9pptFkUEVtOFp8LCLmsye79O-jOQh4RQQdsWXAYpJEqegn4"
+                />
+              </div>
+            </div>
+            <div className="flex-1 w-full flex flex-col gap-5 md:gap-6 pt-4">
+              <div className="group relative p-6 md:p-8 bg-white border border-accent/10 shadow-lg rounded-xl hover:shadow-xl transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors rounded-l-xl"></div>
+                <div className="flex items-start gap-4 md:gap-5">
+                  <span className="material-symbols-outlined text-accent text-3xl md:text-4xl font-light flex-shrink-0">calendar_month</span>
+                  <div>
+                    <h3 className="text-primary text-lg md:text-xl font-bold mb-2">16—17 May 2026</h3>
+                    <p className="text-primary/70 font-medium tracking-widest text-xs md:text-sm uppercase">10:00 AM — 6:00 PM</p>
+                  </div>
+                </div>
+              </div>
+              <div className="group relative p-6 md:p-8 bg-white border border-accent/10 shadow-lg rounded-xl hover:shadow-xl transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors rounded-l-xl"></div>
+                <div className="flex items-start gap-4 md:gap-5">
+                  <span className="material-symbols-outlined text-accent text-3xl md:text-4xl font-light flex-shrink-0">location_on</span>
+                  <div>
+                    <h3 className="text-primary text-lg md:text-xl font-bold mb-2">DoubleTree by Hilton, Dubai</h3>
+                    <p className="text-primary/70 text-sm mb-3 md:mb-4">Dubai, United Arab Emirates</p>
+                    <a className="text-accent text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-accent/30 pb-0.5" href="#">
+                      Get Directions <span className="material-symbols-outlined text-[10px]">arrow_outward</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="group relative p-6 md:p-8 bg-white border border-accent/10 shadow-lg rounded-xl hover:shadow-xl transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-accent/50 group-hover:bg-accent transition-colors rounded-l-xl"></div>
+                <div className="flex items-start gap-4 md:gap-5">
+                  <span className="material-symbols-outlined text-accent text-3xl md:text-4xl font-light flex-shrink-0">checkroom</span>
+                  <div>
+                    <h3 className="text-primary text-lg md:text-xl font-bold mb-1">Business Formal</h3>
+                    <p className="text-primary/70 text-sm italic">or Traditional Indian Attire</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Experience Timeline Section */}
+      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 bg-cream relative border-t border-accent/10">
+        <div className="absolute top-20 left-10 w-96 h-96 opacity-[0.03] pointer-events-none rotate-90">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.4,82.2,23.1,71.6,35.2C61,47.3,51.1,57.8,39.3,65.3C27.5,72.8,13.7,77.3,-0.6,78.3C-14.9,79.4,-29.8,77,-42.6,69.9C-55.4,62.9,-66.1,51.2,-74.3,37.6C-82.5,24,-88.2,8.5,-86.6,-6.3C-85,-21.1,-76.1,-35.2,-64.8,-46.2C-53.5,-57.2,-39.8,-65.1,-26.3,-72.8C-12.8,-80.5,0.5,-88,14.5,-87.6C28.5,-87.2,43.2,-78.9,44.7,-76.4Z" fill="#C5A059" transform="translate(100 100)"></path>
+          </svg>
+        </div>
+        <div className="max-w-7xl mx-auto w-full relative z-10 py-8">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="text-accent font-bold tracking-[0.2em] uppercase text-xs mb-3 block">Curated Itinerary</span>
+            <h2 className="text-primary text-3xl md:text-5xl font-serif font-light">The Experience</h2>
+          </div>
+          <div className="relative px-4">
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent transform md:-translate-x-1/2"></div>
+            <div className="relative flex md:justify-end md:even:justify-start items-center gap-8 mb-16 group w-full">
+              <div className="md:w-1/2 flex md:justify-end order-2 md:order-1 pl-12 md:pl-0 md:pr-12 relative">
+                <div className="text-left md:text-right">
+                  <span className="text-accent font-bold text-xs tracking-widest uppercase mb-1 block">10:00 AM</span>
+                  <h3 className="text-primary text-xl font-bold">Welcome Reception</h3>
+                  <p className="text-primary/70 mt-2 text-sm leading-relaxed max-w-xs ml-0 md:ml-auto">Begin the day with networking over artisanal blends and gourmet refreshments in the Grand Lobby.</p>
+                </div>
+                <div className="absolute left-0 md:left-auto md:right-0 top-1.5 md:top-2 w-4 h-4 rounded-full bg-primary border-2 border-accent transform md:translate-x-1/2 z-20 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
+              </div>
+              <div className="hidden md:block w-1/2 order-2"></div>
+            </div>
+            <div className="relative flex md:justify-start items-center gap-8 mb-16 group w-full">
+              <div className="hidden md:block w-1/2 order-1"></div>
+              <div className="md:w-1/2 flex md:justify-start order-2 pl-12 relative">
+                <div className="absolute left-0 top-1.5 md:top-2 w-4 h-4 rounded-full bg-primary border-2 border-accent transform md:-translate-x-1/2 z-20 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
+                <div className="text-left">
+                  <span className="text-accent font-bold text-xs tracking-widest uppercase mb-1 block">11:30 AM</span>
+                  <h3 className="text-primary text-xl font-bold">Panel: Future of Real Estate</h3>
+                  <p className="text-primary/70 mt-2 text-sm leading-relaxed max-w-xs">Expert insights on regulatory changes, emerging markets, and legacy preservation for NRI investors.</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative flex md:justify-end items-center gap-8 mb-16 group w-full">
+              <div className="md:w-1/2 flex md:justify-end order-2 md:order-1 pl-12 md:pl-0 md:pr-12 relative">
+                <div className="text-left md:text-right">
+                  <span className="text-accent font-bold text-xs tracking-widest uppercase mb-1 block">01:00 PM</span>
+                  <h3 className="text-primary text-xl font-bold">Networking Luncheon</h3>
+                  <p className="text-primary/70 mt-2 text-sm leading-relaxed max-w-xs ml-0 md:ml-auto">A curated culinary journey featuring fusion cuisine, providing an intimate setting for discussion.</p>
+                </div>
+                <div className="absolute left-0 md:left-auto md:right-0 top-1.5 md:top-2 w-4 h-4 rounded-full bg-primary border-2 border-accent transform md:translate-x-1/2 z-20 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
+              </div>
+              <div className="hidden md:block w-1/2 order-2"></div>
+            </div>
+            <div className="relative flex md:justify-start items-center gap-8 group w-full">
+              <div className="hidden md:block w-1/2 order-1"></div>
+              <div className="md:w-1/2 flex md:justify-start order-2 pl-12 relative">
+                <div className="absolute left-0 top-1.5 md:top-2 w-4 h-4 rounded-full bg-primary border-2 border-accent transform md:-translate-x-1/2 z-20 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(197,160,89,0.5)]"></div>
+                <div className="text-left">
+                  <span className="text-accent font-bold text-xs tracking-widest uppercase mb-1 block">03:00 PM</span>
+                  <h3 className="text-primary text-xl font-bold">Exclusive Property Showcase</h3>
+                  <p className="text-primary/70 mt-2 text-sm leading-relaxed max-w-xs">Private viewings of India's most prestigious developments, from Mumbai penthouses to Goa estates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Registration Form Section */}
+      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 bg-cream relative">
+        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start py-8">
+          <div className="space-y-6 md:space-y-8 sticky top-24 md:top-32">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-primary leading-tight">
+              Secure Your <br/>
+              <span className="text-accent font-serif font-light italic">Invitation</span>
+            </h2>
+            <p className="text-primary/70 text-base md:text-lg max-w-md font-light leading-relaxed">
+              Spaces are strictly limited to ensure an intimate and valuable experience for all guests. Please register your interest below.
+            </p>
+            <div className="flex items-center gap-4 md:gap-5 mt-6 md:mt-8 p-5 md:p-6 border border-accent/20 rounded-xl bg-white shadow-sm">
+              <div className="size-10 md:size-12 flex-shrink-0 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                <span className="material-symbols-outlined text-xl md:text-2xl">diamond</span>
+              </div>
+              <div>
+                <p className="text-accent font-bold uppercase tracking-wider text-xs md:text-sm mb-1">Exclusive Access</p>
+                <p className="text-primary/70 text-xs md:text-sm leading-relaxed">Includes priority for future investment rounds & private gala dinner.</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white border border-accent/20 p-6 md:p-8 lg:p-10 rounded-xl shadow-2xl relative">
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <span className="material-symbols-outlined text-accent text-6xl">edit_document</span>
+            </div>
+            <form className="flex flex-col gap-6 md:gap-8">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div className="flex flex-col gap-2">
+                  <label className="text-primary/80 text-xs font-bold uppercase tracking-widest">First Name</label>
+                  <input className="w-full bg-transparent border-0 border-b-2 border-accent/50 focus:ring-0 focus:border-accent text-primary placeholder:text-primary/40 py-2.5 md:py-3 transition-colors" placeholder="Enter your name" type="text"/>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-primary/80 text-xs font-bold uppercase tracking-widest">Last Name</label>
+                  <input className="w-full bg-transparent border-0 border-b-2 border-accent/50 focus:ring-0 focus:border-accent text-primary placeholder:text-primary/40 py-2.5 md:py-3 transition-colors" placeholder="Enter your last name" type="text"/>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-primary/80 text-xs font-bold uppercase tracking-widest">Email Address</label>
+                <input className="w-full bg-transparent border-0 border-b-2 border-accent/50 focus:ring-0 focus:border-accent text-primary placeholder:text-primary/40 py-2.5 md:py-3 transition-colors" placeholder="name@company.com" type="email"/>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-primary/80 text-xs font-bold uppercase tracking-widest">Phone Number</label>
+                <input className="w-full bg-transparent border-0 border-b-2 border-accent/50 focus:ring-0 focus:border-accent text-primary placeholder:text-primary/40 py-2.5 md:py-3 transition-colors" placeholder="+971 ..." type="tel"/>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-primary/80 text-xs font-bold uppercase tracking-widest">Investment Interest</label>
+                <select className="w-full bg-transparent border-0 border-b-2 border-accent/50 focus:ring-0 focus:border-accent cursor-pointer text-primary py-2.5 md:py-3 transition-colors">
+                  <option className="bg-cream text-primary">Residential Luxury</option>
+                  <option className="bg-cream text-primary">Commercial Assets</option>
+                  <option className="bg-cream text-primary">Land & Estates</option>
+                  <option className="bg-cream text-primary">General Inquiry</option>
+                </select>
+              </div>
+              <div className="pt-2 md:pt-4">
+                <button className="w-full h-12 md:h-14 bg-accent text-primary text-sm md:text-base font-bold rounded-lg shadow-lg hover:bg-[#d4b06d] hover:shadow-xl transition-all flex items-center justify-center gap-3 uppercase tracking-wider active:scale-[0.98]" type="button">
+                  <span>Request Invitation</span>
+                  <span className="material-symbols-outlined text-base md:text-lg">arrow_forward</span>
+                </button>
+                <p className="text-center text-[10px] uppercase tracking-widest text-primary/40 mt-3 md:mt-4">
+                  By registering, you agree to our privacy policy.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Financial Insights Section */}
+      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 bg-primary relative">
+        <main className="relative z-10 flex-grow max-w-7xl mx-auto w-full py-8">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 animate-fade-in-up">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 md:mb-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-accent text-xl">analytics</span>
               <span className="text-xs font-bold uppercase tracking-widest text-accent">Market Intelligence</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-cream leading-tight tracking-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-cream leading-tight tracking-tight">
               The India Advantage: <br className="hidden md:block"/>
               <span className="text-white/90">Financial Forecasts</span>
             </h1>
-            <p className="mt-4 text-text-muted text-lg max-w-xl font-light">
+            <p className="mt-4 text-cream/80 text-base md:text-lg max-w-xl font-light leading-relaxed">
                 An in-depth analysis of predicted occupancy, currency leverage, and asset yield for luxury Indian real estate.
             </p>
           </div>
-          <div className="bg-white/5 p-1 rounded-xl border border-white/10 backdrop-blur-sm self-start lg:self-end">
-            <div className="flex items-center">
+          <div className="bg-white/5 p-1 rounded-xl border border-white/10 backdrop-blur-sm self-start lg:self-end overflow-x-auto">
+            <div className="flex items-center min-w-max">
               {['1 Year', '3 Year', '5 Year', '10 Year Forecast'].map((label, i) => (
-                <label key={i} className="cursor-pointer group relative px-4 py-2 rounded-lg transition-all has-[:checked]:bg-accent has-[:checked]:shadow-lg has-[:checked]:text-primary">
+                <label key={i} className="cursor-pointer group relative px-3 md:px-4 py-2 rounded-lg transition-all has-[:checked]:bg-accent has-[:checked]:shadow-lg has-[:checked]:text-primary whitespace-nowrap">
                   <input className="sr-only" name="timeframe" type="radio" defaultValue={label.includes('5') ? 'on' : undefined} defaultChecked={label.includes('5')} />
-                  <span className="text-xs md:text-sm font-medium text-text-muted group-hover:text-cream group-has-[:checked]:text-primary group-has-[:checked]:font-bold transition-colors relative z-10">
+                  <span className="text-xs md:text-sm font-medium text-cream/70 group-hover:text-cream group-has-[:checked]:text-primary group-has-[:checked]:font-bold transition-colors relative z-10">
                     {label}
                   </span>
                 </label>
@@ -283,6 +522,10 @@ const InvestmentInsights: React.FC = () => {
           </div>
         </div>
       </main>
+      </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

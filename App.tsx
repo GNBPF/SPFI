@@ -6,13 +6,15 @@ import InvestmentInsights from './components/InvestmentInsights';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <FloatingNav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/investment-insights" element={<InvestmentInsights />} />
-      </Routes>
-    </Router>
+    <div className="overflow-x-hidden">
+      <Router>
+        <FloatingNav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/investment-insights" element={<InvestmentInsights />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

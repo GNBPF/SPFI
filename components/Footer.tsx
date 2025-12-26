@@ -1,17 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary text-cream py-16 px-6 lg:px-12 border-t-4 border-accent snap-start">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-12">
+    <footer className="bg-primary text-cream py-12 md:py-16 px-6 md:px-12 lg:px-16 border-t-4 border-accent snap-start">
+      <div className="max-w-7xl mx-auto w-full flex flex-col gap-8 md:gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">
           {/* Brand */}
           <div className="max-w-xs flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <div className="size-8 text-accent">
-                <span className="material-symbols-outlined text-3xl">temple_hindu</span>
-              </div>
-              <h4 className="text-xl font-bold text-accent uppercase tracking-wide">Sovereign Property</h4>
+              <Link to="/">
+                <img src="/logoLight.png" alt="SPFI Logo" width={250} height={400} />
+              </Link>
             </div>
             <p className="text-cream/70 text-sm leading-relaxed">
               Connecting the global Indian diaspora with the finest legacy assets in the motherland. Experience the festival in Dubai.
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/40">
-          <p>© 2024 Sovereign Property Festival India. All Rights Reserved.</p>
+          <p>© 2026 Spectrum Property Festival India. All Rights Reserved.</p>
           <p>Designed for Excellence.</p>
         </div>
       </div>
