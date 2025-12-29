@@ -41,8 +41,8 @@ const AppleHeroGSAP: React.FC = () => {
       const scrollTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
-        end: "+=400%",
-        scrub: 0.6,
+        end: "+=700%",
+        scrub: 0.8,
         pin: stageRef.current,
         anticipatePin: 1,
         markers: false,
@@ -52,11 +52,11 @@ const AppleHeroGSAP: React.FC = () => {
           const progress = self.progress;
           let newScene: 1 | 2 | 3 | null = null;
           
-          if (progress < 0.30) {
+          if (progress < 0.35) {
             newScene = 1;
-          } else if (progress < 0.60) {
+          } else if (progress < 0.65) {
             newScene = 2;
-          } else if (progress < 0.95) {
+          } else if (progress < 0.97) {
             newScene = 3;
           } else {
             newScene = null; // Past hero section
@@ -71,7 +71,7 @@ const AppleHeroGSAP: React.FC = () => {
         snap: {
           snapTo: (value) => {
             // Allow free scroll exit at very end
-            if (value > 0.95) return value;
+            if (value > 0.97) return value;
 
             // Get labels from timeline
             const labels = [
@@ -95,9 +95,9 @@ const AppleHeroGSAP: React.FC = () => {
 
             return closest;
           },
-          duration: { min: 0.15, max: 0.25 },
-          delay: 0.02,
-          ease: "power2.out",
+          duration: 0.35,
+          delay: 0.05,
+          ease: "power3.out",
           inertia: false,
         },
       });
@@ -117,7 +117,7 @@ const AppleHeroGSAP: React.FC = () => {
         filter: "blur(0px)",
         immediateRender: true,
       }, 0);
-      tl.to({}, { duration: 0.15 });
+      tl.to({}, { duration: 0.30 });
 
       /* ----------------------------------
          TRANSITION 1 → 2
@@ -131,14 +131,14 @@ const AppleHeroGSAP: React.FC = () => {
         y: -60,
         opacity: 0,
         filter: "blur(15px)",
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       }, "<");
       
       // Smooth fade out Scene 1
       tl.to(".s1-scene", {
         opacity: 0,
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       });
 
@@ -146,26 +146,26 @@ const AppleHeroGSAP: React.FC = () => {
       tl.to(".s2-scene", {
         opacity: 1,
         zIndex: 3,
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.in",
-      }, "<0.02");
+      }, "<0.03");
 
       tl.to(".s2-text", {
         y: 0,
         opacity: 1,
         filter: "blur(0px)",
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       }, "<");
       
       // Fade out black layer
-      tl.to(".fade-layer", { opacity: 0, duration: 0.06 }, "<");
+      tl.to(".fade-layer", { opacity: 0, duration: 0.08 }, "<");
 
       /* ----------------------------------
          SCENE 2 FULL
       ---------------------------------- */
       tl.addLabel("scene2");
-      tl.to({}, { duration: 0.10 });
+      tl.to({}, { duration: 0.20 });
 
       /* ----------------------------------
          TRANSITION 2 → 3
@@ -178,7 +178,7 @@ const AppleHeroGSAP: React.FC = () => {
       tl.to(".s2-scene", {
         opacity: 0,
         zIndex: 2,
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       });
 
@@ -186,7 +186,7 @@ const AppleHeroGSAP: React.FC = () => {
         y: -60,
         opacity: 0,
         filter: "blur(15px)",
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       }, "<");
 
@@ -194,26 +194,26 @@ const AppleHeroGSAP: React.FC = () => {
       tl.to(".s3-scene", {
         opacity: 1,
         zIndex: 3,
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.in",
-      }, "<0.02");
+      }, "<0.03");
 
       tl.to(".s3-text", {
         y: 0,
         opacity: 1,
         filter: "blur(0px)",
-        duration: 0.08,
+        duration: 0.10,
         ease: "power3.out",
       }, "<");
       
       // Fade out black layer
-      tl.to(".fade-layer", { opacity: 0, duration: 0.06 }, "<");
+      tl.to(".fade-layer", { opacity: 0, duration: 0.08 }, "<");
 
       /* ----------------------------------
          SCENE 3 FULL
       ---------------------------------- */
       tl.addLabel("scene3");
-      tl.to({}, { duration: 0.15 });
+      tl.to({}, { duration: 0.30 });
     }, containerRef);
 
     return () => ctx.revert();

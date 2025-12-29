@@ -105,6 +105,12 @@ const useBackgroundColor = () => {
       return;
     }
 
+    // Registration pages have light backgrounds (white/green) - need dark navbar
+    if (path.startsWith('/concierge')) {
+      setIsLight(false);
+      return;
+    }
+
     // For home page, check scroll position and element below
     if (path === '/') {
       // Get element directly below navbar
@@ -215,13 +221,17 @@ const FloatingNav: React.FC = () => {
     return location.pathname === path;
   };
 
+  // Check if we're on a concierge/registration page
+  const isConciergePage = location.pathname.startsWith('/concierge');
+
   // Determine navbar style based on background
-  const shouldUseLightNav = isLight && isScrolled;
+  // For concierge pages, always use dark navbar. Otherwise, use light navbar only when scrolled on light backgrounds
+  const shouldUseLightNav = !isConciergePage && isLight && isScrolled;
   
   // Navbar background styles
   const navBgClass = shouldUseLightNav
     ? 'bg-white/95 backdrop-blur-xl shadow-lg border border-gray-200/50'
-    : isScrolled
+    : (isScrolled || isConciergePage)
     ? 'bg-primary/95 backdrop-blur-xl shadow-lg border border-white/10'
     : 'bg-white/10 backdrop-blur-md border border-white/20';
 
@@ -233,7 +243,7 @@ const FloatingNav: React.FC = () => {
   return (
     <>
       <div 
-        className="fixed top-2 sm:top-4 left-0 right-0 z-50 flex justify-center pointer-events-none px-3 sm:px-4"
+        className="fixed top-1.5 min-[375px]:top-2 sm:top-3 md:top-4 left-0 right-0 z-50 flex justify-center pointer-events-none px-2 min-[375px]:px-3 sm:px-4"
       >
         <motion.nav 
           ref={navRef}
@@ -249,7 +259,7 @@ const FloatingNav: React.FC = () => {
           transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
         >
         <div 
-          className={`flex items-center justify-between px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 ${navBgClass}`}
+          className={`flex items-center justify-between px-2.5 min-[375px]:px-3 sm:px-4 md:px-5 lg:px-6 py-2 min-[375px]:py-2.5 sm:py-3 rounded-full transition-all duration-300 ${navBgClass}`}
         >
           {/* Logo */}
           <Link 
@@ -261,16 +271,16 @@ const FloatingNav: React.FC = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
+            className="flex items-center gap-2 min-[375px]:gap-2.5 sm:gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
           >
             <img src="/SPFILogo.png" alt="SPFI Logo" className="w-12 h-auto sm:w-14 md:w-16 lg:w-[70px]" />
       </Link>
       
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 flex-1 justify-center mx-4 xl:mx-8 min-w-0">
+          <div className="hidden lg:flex items-center gap-1 ml-auto mr-2 lg:mr-4 xl:mr-6 2xl:mr-8 min-w-0">
             <Link 
               to="/"
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-all ${
                 isActive('/')
                   ? shouldUseLightNav
                     ? 'bg-accent/10 text-accent' 
@@ -284,7 +294,7 @@ const FloatingNav: React.FC = () => {
             </Link>
             <Link 
               to="/investment-insights"
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-all ${
                 isActive('/investment-insights')
                   ? shouldUseLightNav
                     ? 'bg-accent/10 text-accent' 
@@ -296,53 +306,28 @@ const FloatingNav: React.FC = () => {
             >
               Investment Insights
             </Link>
-            <a 
-              href="#concierge"
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                shouldUseLightNav
-                  ? `${textMuted} hover:bg-gray-100`
-                  : 'text-cream/80 hover:bg-white/10'
-              }`}
-            >
-              Concierge
-            </a>
-          </div>
-
-          {/* Right Side Actions */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            {/* Register Button */}
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={`hidden sm:flex items-center justify-center h-9 sm:h-10 px-4 sm:px-5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
-                shouldUseLightNav
-                  ? 'bg-accent hover:bg-[#d4b06d] text-primary shadow-md'
-                  : 'bg-accent/90 hover:bg-accent text-primary shadow-lg'
+            <Link 
+              to="/concierge"
+              className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold transition-all ${
+                isActive('/concierge') || location.pathname.startsWith('/concierge')
+                  ? shouldUseLightNav
+                    ? 'bg-accent text-primary' 
+                    : 'bg-accent text-primary'
+                  : shouldUseLightNav
+                    ? 'bg-accent hover:bg-[#d4b06d] text-primary'
+                    : 'bg-accent/90 hover:bg-accent text-primary'
               }`}
             >
               Register
-            </motion.button>
+            </Link>
+          </div>
 
-            {/* User Menu Button - Hidden on mobile */}
-            <button 
-              className={`hidden md:flex items-center gap-2 h-9 sm:h-10 px-2 sm:px-3 rounded-full transition-all ${
-                shouldUseLightNav
-                  ? 'bg-white hover:bg-gray-50 border border-gray-200 shadow-sm'
-                  : 'bg-white/10 hover:bg-white/20 border border-white/20'
-              }`}
-            >
-              <span className={`material-symbols-outlined text-base sm:text-lg transition-colors duration-300 ${
-                shouldUseLightNav ? 'text-gray-700' : 'text-cream'
-              }`}>menu</span>
-              <span className={`material-symbols-outlined text-base sm:text-lg transition-colors duration-300 ${
-                shouldUseLightNav ? 'text-gray-700' : 'text-cream'
-              }`}>account_circle</span>
-            </button>
-
+          {/* Right Side Actions - Only Mobile Menu Toggle on Mobile */}
+          <div className="flex items-center gap-1.5 min-[375px]:gap-2 sm:gap-2.5 md:gap-3 flex-shrink-0">
             {/* Mobile Menu Toggle - Only visible on mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden flex items-center justify-center h-9 sm:h-10 w-9 sm:w-10 rounded-full transition-all flex-shrink-0 ${
+              className={`lg:hidden flex items-center justify-center h-8 min-[375px]:h-9 sm:h-10 w-8 min-[375px]:w-9 sm:w-10 rounded-full transition-all flex-shrink-0 ${
                 shouldUseLightNav
                   ? 'bg-white hover:bg-gray-50 border border-gray-200'
                   : 'bg-white/10 hover:bg-white/20 border border-white/20'
@@ -401,21 +386,17 @@ const FloatingNav: React.FC = () => {
             >
               Investment Insights
             </Link>
-            <a
-              href="#concierge"
+            <Link
+              to="/concierge"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
+              className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                isActive('/concierge') || location.pathname.startsWith('/concierge')
+                  ? 'bg-accent text-primary'
+                  : 'bg-accent hover:bg-[#d4b06d] text-primary'
               }`}
             >
-              Concierge
-            </a>
-            <button 
-              className="mt-2 px-4 py-3 rounded-xl bg-accent hover:bg-[#d4b06d] text-primary text-sm font-semibold transition-all"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
               Register
-            </button>
+            </Link>
           </div>
         </div>
         </motion.div>

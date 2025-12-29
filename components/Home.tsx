@@ -151,16 +151,16 @@ const Home: React.FC = () => {
       />
 
       {/* Heritage Meets High Yield Section (from ScreenFour) - Starts after hero */}
-      <section className="relative z-20 bg-cream min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto w-full py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="relative z-20 bg-cream min-h-screen flex items-center pt-8 min-[375px]:pt-10 sm:pt-12 md:pt-16 lg:pt-20 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-[375px]:gap-10 sm:gap-12 md:gap-14 lg:gap-16 items-center">
             {/* Left Visual Panel */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeInUp}
-              className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden group"
+              className="relative h-[280px] min-[375px]:h-[320px] sm:h-[380px] md:h-[450px] lg:h-[550px] xl:h-[600px] rounded-xl min-[375px]:rounded-2xl overflow-hidden group"
             >
               <img src="/heritage.png" alt="Hero Image" className="w-full h-full object-cover" />
             </motion.div>
@@ -181,51 +181,51 @@ const Home: React.FC = () => {
                   },
                 },
               }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-6 min-[375px]:gap-7 sm:gap-8 md:gap-10"
             >
-              <div className="flex flex-col gap-3 sm:gap-4">
-                <h2 className="text-primary text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight">
+              <div className="flex flex-col gap-2 min-[375px]:gap-3 sm:gap-4">
+                <h2 className="text-primary text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-[1.1] tracking-tight">
                   Heritage Meets <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#8f6e30] font-semibold">High Yield</span> <br/>
                   The India Story.
                 </h2>
               </div>
 
-              <div className="w-16 sm:w-20 md:w-24 h-[2px] bg-accent/40"></div>
+              <div className="w-12 min-[375px]:w-14 sm:w-16 md:w-20 lg:w-24 h-[2px] bg-accent/40"></div>
 
-              <div className="flex flex-col gap-4 sm:gap-6 text-primary/80">
-                <p className="text-base sm:text-lg font-medium leading-relaxed">
+              <div className="flex flex-col gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 text-primary/80">
+                <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-medium leading-relaxed">
                   Beyond the emotional resonance of returning to your roots lies an undeniable economic truth: India is rising.
                 </p>
-                <p className="text-sm sm:text-base font-light leading-relaxed text-primary/70">
+                <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light leading-relaxed text-primary/70">
                   The convergence of world-class infrastructure, regulatory transparency, and a booming digital economy has created a perfect storm for wealth creation. Own a piece of the legacy while securing a high-yield asset for generations to come.
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-4 border-t border-primary/10 pt-6 sm:pt-8">
-                <div className="flex flex-col gap-1">
-                  <span className="text-2xl sm:text-3xl font-bold text-primary">7.2%</span>
-                  <span className="text-[10px] sm:text-xs font-semibold text-accent uppercase tracking-wider">GDP Growth Forecast</span>
+              <div className="grid grid-cols-2 gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 mt-2 min-[375px]:mt-4 border-t border-primary/10 pt-4 min-[375px]:pt-5 sm:pt-6 md:pt-8">
+                <div className="flex flex-col gap-0.5 min-[375px]:gap-1">
+                  <span className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">7.2%</span>
+                  <span className="text-[9px] min-[375px]:text-[10px] sm:text-xs md:text-sm font-semibold text-accent uppercase tracking-wider">GDP Growth Forecast</span>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-2xl sm:text-3xl font-bold text-primary">~12%</span>
-                  <span className="text-[10px] sm:text-xs font-semibold text-accent uppercase tracking-wider">Avg. Rental Yield</span>
+                <div className="flex flex-col gap-0.5 min-[375px]:gap-1">
+                  <span className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">~12%</span>
+                  <span className="text-[9px] min-[375px]:text-[10px] sm:text-xs md:text-sm font-semibold text-accent uppercase tracking-wider">Avg. Rental Yield</span>
                 </div>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-4 min-[375px]:pt-5 sm:pt-6">
                 <motion.button
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold text-primary uppercase tracking-widest border border-primary overflow-hidden transition-all hover:text-cream w-full sm:w-auto"
+                  className="group relative inline-flex items-center justify-center px-5 min-[375px]:px-6 sm:px-8 md:px-10 py-2.5 min-[375px]:py-3 sm:py-4 text-[10px] min-[375px]:text-xs sm:text-sm md:text-base font-bold text-primary uppercase tracking-widest border border-primary overflow-hidden transition-all hover:text-cream w-full sm:w-auto"
                 >
                   <span className="absolute inset-0 w-0 bg-primary transition-all duration-300 ease-out group-hover:w-full"></span>
-                  <span className="relative flex items-center gap-2">
+                  <span className="relative flex items-center gap-1.5 min-[375px]:gap-2">
                     Request Expo Invitation
-                    <span className="material-symbols-outlined text-base sm:text-lg">arrow_forward</span>
+                    <span className="material-symbols-outlined text-sm min-[375px]:text-base sm:text-lg">arrow_forward</span>
                   </span>
                 </motion.button>
-                <p className="mt-4 text-xs text-primary/50 italic font-serif">Access by Registration / Invitation</p>
+                <p className="mt-3 min-[375px]:mt-4 text-[10px] min-[375px]:text-xs text-primary/50 italic font-serif">Access by Registration / Invitation</p>
               </div>
             </motion.div>
           </div>
@@ -233,7 +233,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Combined: Why SPFI Matters & What You'll Explore Section */}
-      <section className="relative min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 border-t border-primary/10 overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <div 
@@ -243,29 +243,29 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-white/75" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto w-full py-8">
+        <div className="relative z-10 max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           {/* Header */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-8 md:mb-12"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-[#2c2c2c] mb-3">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 leading-tight">
               Why SPFI Matters to Investors
             </h2>
-            <p className="text-[#5a5a5a] text-sm md:text-base font-light max-w-3xl mx-auto">
+            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2">
               India's real estate market is entering a powerful growth cycle—driven by infrastructure expansion, urban demand, rental yield growth, and policy stability. SPFI gives you direct access to this momentum.
             </p>
           </motion.div>
 
           {/* Combined Layout: Desktop/Tablet - Side by Side, Mobile - Stacked */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
             {/* Left Column: Why SPFI Matters */}
             <div>
-              <h3 className="text-lg md:text-xl font-semibold text-primary mb-4 md:mb-6">Key Benefits</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-primary mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Key Benefits</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 min-[375px]:gap-4 sm:gap-5">
                 {[
                   {
                     title: 'Discover Pre-Launch Projects',
@@ -301,10 +301,10 @@ const Home: React.FC = () => {
                         },
                       },
                     }}
-                    className="p-4 md:p-5 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
+                    className="p-3 min-[375px]:p-4 sm:p-5 md:p-6 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
                   >
-                    <h4 className="text-base md:text-lg font-semibold text-primary mb-2">{benefit.title}</h4>
-                    <p className="text-xs md:text-sm text-primary/70 leading-relaxed">{benefit.description}</p>
+                    <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-primary mb-1.5 min-[375px]:mb-2">{benefit.title}</h4>
+                    <p className="text-xs min-[375px]:text-sm sm:text-base text-primary/70 leading-relaxed">{benefit.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -312,13 +312,13 @@ const Home: React.FC = () => {
 
             {/* Right Column: What You'll Explore */}
             <div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2c2c] mb-3 md:mb-4">What You'll Explore</h3>
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#2c2c2c] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">What You'll Explore</h3>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeInUp}
-                className="space-y-3 text-sm md:text-base text-[#5a5a5a] leading-relaxed"
+                className="space-y-2.5 min-[375px]:space-y-3 sm:space-y-4 text-xs min-[375px]:text-sm sm:text-base md:text-lg text-[#5a5a5a] leading-relaxed"
               >
                 <div>
                   <p className="font-semibold text-[#2c2c2c] mb-1.5">Residential Investments:</p>
@@ -343,24 +343,24 @@ const Home: React.FC = () => {
       </section>
 
       {/* Exclusive Financial Privileges Section */}
-      <section className="bg-primary min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 text-cream">
-        <div className="max-w-7xl mx-auto w-full py-8">
+      <section className="bg-primary min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-cream mb-3 sm:mb-4">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-cream mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Exclusive Financial Privileges for Investors
             </h2>
-            <p className="text-cream/80 text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-4">
+            <p className="text-cream/80 text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2 min-[375px]:px-4">
               SPFI goes beyond showcasing projects—it enables execution. On-spot financial assistance and exclusive offers available only at the event.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8">
             {[
               {
                 title: 'On-Spot Bank Loan Assistance',
@@ -400,19 +400,19 @@ const Home: React.FC = () => {
                     },
                   },
                 }}
-                className="bg-background-surface/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-accent/20"
+                className="bg-background-surface/50 backdrop-blur-sm rounded-xl p-4 min-[375px]:p-5 sm:p-6 md:p-8 border border-accent/20"
               >
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-xl sm:text-2xl text-accent">
+                <div className="flex items-start gap-2.5 min-[375px]:gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 w-9 h-9 min-[375px]:w-10 min-[375px]:h-10 sm:w-12 sm:h-12 rounded-full bg-accent/20 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-lg min-[375px]:text-xl sm:text-2xl text-accent">
                       {privilege.icon}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-cream mb-2 sm:mb-3">
+                    <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-cream mb-1.5 min-[375px]:mb-2 sm:mb-3">
                       {privilege.title}
                     </h3>
-                    <p className="text-cream/80 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-cream/80 text-[11px] min-[375px]:text-xs sm:text-sm md:text-base leading-relaxed">
                       {privilege.description}
                     </p>
                   </div>
@@ -424,24 +424,24 @@ const Home: React.FC = () => {
       </section>
 
       {/* Combined: Who Should Attend & Why Trust Us Section */}
-      <section className="bg-white min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16">
-        <div className="max-w-7xl mx-auto w-full py-8">
+      <section className="bg-white min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-8 md:mb-12"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-[#2c2c2c] mb-3">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 leading-tight">
               For Serious Investors
             </h2>
-            <p className="text-[#5a5a5a] text-sm md:text-base font-light max-w-2xl mx-auto">
+            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto px-2">
               Designed exclusively for global investors seeking high-growth property assets across India
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
             {/* Left Column: Who Should Attend */}
             <motion.div
               initial="hidden"
@@ -449,8 +449,8 @@ const Home: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeInUp}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2c2c] mb-4 md:mb-6">Who Should Attend</h3>
-              <div className="space-y-3 md:space-y-4">
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#2c2c2c] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Who Should Attend</h3>
+              <div className="space-y-2.5 min-[375px]:space-y-3 sm:space-y-4">
                 {[
                   'NRIs & Overseas Indians',
                   'Global real estate investors',
@@ -474,12 +474,12 @@ const Home: React.FC = () => {
                         },
                       },
                     }}
-                    className="flex items-center gap-3 p-4 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
+                    className="flex items-center gap-2.5 min-[375px]:gap-3 p-3 min-[375px]:p-4 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
                   >
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center">
-                      <span className="material-symbols-outlined text-accent text-lg">check_circle</span>
+                    <div className="flex-shrink-0 w-7 h-7 min-[375px]:w-8 min-[375px]:h-8 rounded-full bg-accent/10 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-accent text-base min-[375px]:text-lg">check_circle</span>
                     </div>
-                    <p className="text-primary font-medium text-sm md:text-base">{audience}</p>
+                    <p className="text-primary font-medium text-xs min-[375px]:text-sm sm:text-base md:text-lg">{audience}</p>
                   </motion.div>
                 ))}
               </div>
@@ -492,8 +492,8 @@ const Home: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeInUp}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2c2c] mb-4 md:mb-6">Why Trust Us</h3>
-              <div className="space-y-4 md:space-y-5">
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#2c2c2c] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Why Trust Us</h3>
+              <div className="space-y-3 min-[375px]:space-y-4 sm:space-y-5">
                 {[
                   {
                     icon: 'verified',
@@ -528,19 +528,19 @@ const Home: React.FC = () => {
                         },
                       },
                     }}
-                    className="p-4 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
+                    className="p-3 min-[375px]:p-4 sm:p-5 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                        <span className="material-symbols-outlined text-accent text-xl">
+                    <div className="flex items-start gap-2.5 min-[375px]:gap-3">
+                      <div className="flex-shrink-0 w-9 h-9 min-[375px]:w-10 min-[375px]:h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                        <span className="material-symbols-outlined text-accent text-lg min-[375px]:text-xl">
                           {feature.icon}
                         </span>
                       </div>
                       <div>
-                        <h4 className="text-base md:text-lg font-semibold text-[#2c2c2c] mb-1">
+                        <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-[#2c2c2c] mb-0.5 min-[375px]:mb-1">
                           {feature.title}
                         </h4>
-                        <p className="text-[#5a5a5a] text-xs md:text-sm leading-relaxed">
+                        <p className="text-[#5a5a5a] text-[11px] min-[375px]:text-xs sm:text-sm md:text-base leading-relaxed">
                           {feature.description}
                         </p>
                       </div>
@@ -554,9 +554,9 @@ const Home: React.FC = () => {
         </section>
 
       {/* Combined: Why Dubai. Why Now. & Event Snapshot Section */}
-      <section className="bg-gradient-to-br from-primary to-[#0a2b22] min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 text-cream">
-        <div className="max-w-7xl mx-auto w-full py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <section className="bg-gradient-to-br from-primary to-[#0a2b22] min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
             {/* Left Column: Why Dubai. Why Now. */}
             <motion.div
               initial="hidden"
@@ -565,14 +565,14 @@ const Home: React.FC = () => {
               variants={scaleIn}
               className="text-center lg:text-left"
             >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-cream mb-3 md:mb-4">
+              <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-cream mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
                 Why Dubai? Why Now?
               </h2>
-              <p className="text-cream/90 text-sm md:text-base font-light leading-relaxed mb-6 md:mb-8">
+              <p className="text-cream/90 text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light leading-relaxed mb-4 min-[375px]:mb-5 sm:mb-6 md:mb-8">
                 Dubai is the gateway for global Indian investors—and SPFI places India's property potential right where capital lives. With currency advantages, regulatory clarity, and rising demand back home, this is the moment to position yourself ahead of the curve.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6">
                 {[
                   {
                     icon: 'currency_exchange',
@@ -609,13 +609,13 @@ const Home: React.FC = () => {
                     }}
                     className="text-center lg:text-left"
                   >
-                    <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-accent/20 mb-2 md:mb-3">
-                      <span className="material-symbols-outlined text-xl sm:text-2xl md:text-3xl text-accent">
+                    <div className="inline-flex items-center justify-center w-9 h-9 min-[375px]:w-10 min-[375px]:h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-accent/20 mb-1.5 min-[375px]:mb-2 sm:mb-2.5 md:mb-3">
+                      <span className="material-symbols-outlined text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl text-accent">
                         {point.icon}
                       </span>
                     </div>
-                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-cream mb-1" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)' }}>{point.title}</h3>
-                    <p className="text-cream/80 text-xs sm:text-xs md:text-sm" style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}>{point.description}</p>
+                    <h3 className="text-xs min-[375px]:text-sm sm:text-base md:text-lg font-semibold text-cream mb-0.5 min-[375px]:mb-1" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)' }}>{point.title}</h3>
+                    <p className="text-cream/80 text-[10px] min-[375px]:text-xs sm:text-sm md:text-base" style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)' }}>{point.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -629,34 +629,34 @@ const Home: React.FC = () => {
               variants={fadeInUp}
               className="w-full"
             >
-              <h3 className="text-xl md:text-2xl font-semibold text-cream mb-4 md:mb-6 text-center lg:text-left">Event Snapshot</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
-                  <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">location_on</span>
+              <h3 className="text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl font-semibold text-cream mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 text-center lg:text-left">Event Snapshot</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 min-[375px]:gap-4">
+                <div className="flex items-start gap-2.5 min-[375px]:gap-3 p-3 min-[375px]:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
+                  <span className="material-symbols-outlined text-accent text-lg min-[375px]:text-xl sm:text-2xl flex-shrink-0">location_on</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Venue</p>
-                    <p className="text-cream font-medium text-sm md:text-base">DoubleTree by Hilton, Dubai</p>
+                    <p className="text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Venue</p>
+                    <p className="text-cream font-medium text-xs min-[375px]:text-sm sm:text-base">DoubleTree by Hilton, Dubai</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
-                  <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">event</span>
+                <div className="flex items-start gap-2.5 min-[375px]:gap-3 p-3 min-[375px]:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
+                  <span className="material-symbols-outlined text-accent text-lg min-[375px]:text-xl sm:text-2xl flex-shrink-0">event</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Dates</p>
-                    <p className="text-cream font-medium text-sm md:text-base">16–17 May 2026</p>
+                    <p className="text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Dates</p>
+                    <p className="text-cream font-medium text-xs min-[375px]:text-sm sm:text-base">16–17 May 2026</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
-                  <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">dashboard</span>
+                <div className="flex items-start gap-2.5 min-[375px]:gap-3 p-3 min-[375px]:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
+                  <span className="material-symbols-outlined text-accent text-lg min-[375px]:text-xl sm:text-2xl flex-shrink-0">dashboard</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Format</p>
-                    <p className="text-cream font-medium text-sm md:text-base">Curated Exhibition • Investor Consultations • Finance Desks</p>
+                    <p className="text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Format</p>
+                    <p className="text-cream font-medium text-xs min-[375px]:text-sm sm:text-base">Curated Exhibition • Investor Consultations • Finance Desks</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
-                  <span className="material-symbols-outlined text-accent text-xl md:text-2xl flex-shrink-0">vpn_key</span>
+                <div className="flex items-start gap-2.5 min-[375px]:gap-3 p-3 min-[375px]:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-cream/20 text-left">
+                  <span className="material-symbols-outlined text-accent text-lg min-[375px]:text-xl sm:text-2xl flex-shrink-0">vpn_key</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Access</p>
-                    <p className="text-cream font-medium text-sm md:text-base">By Registration / Invitation</p>
+                    <p className="text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider text-accent mb-0.5">Access</p>
+                    <p className="text-cream font-medium text-xs min-[375px]:text-sm sm:text-base">By Registration / Invitation</p>
                   </div>
                 </div>
               </div>
@@ -666,24 +666,24 @@ const Home: React.FC = () => {
         </section>
 
       {/* Why Now Section (from ScreenFour) */}
-      <section className="bg-white min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 border-t border-primary/10">
-        <div className="max-w-7xl mx-auto w-full py-8">
+      <section className="bg-white min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#2c2c2c] mb-3 sm:mb-4">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Why Invest Now?
             </h2>
-            <p className="text-[#5a5a5a] text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto px-4">
+            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto px-2 min-[375px]:px-4">
               Three compelling reasons why this moment is pivotal for NRI real estate investment
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8 lg:gap-12">
             {[
               {
                 icon: 'trending_up',
@@ -718,13 +718,13 @@ const Home: React.FC = () => {
                     },
                   },
                 }}
-                className="flex flex-col gap-3 sm:gap-4 p-5 sm:p-6 border-l border-accent/30 hover:border-accent transition-colors duration-300"
+                className="flex flex-col gap-2.5 min-[375px]:gap-3 sm:gap-4 p-4 min-[375px]:p-5 sm:p-6 border-l border-accent/30 hover:border-accent transition-colors duration-300"
               >
-                <div className="size-10 sm:size-12 rounded-full bg-cream flex items-center justify-center text-primary">
-                  <span className="material-symbols-outlined text-xl sm:text-2xl">{feature.icon}</span>
+                <div className="size-9 min-[375px]:size-10 sm:size-12 rounded-full bg-cream flex items-center justify-center text-primary">
+                  <span className="material-symbols-outlined text-lg min-[375px]:text-xl sm:text-2xl">{feature.icon}</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-primary">{feature.title}</h3>
-                <p className="text-primary/70 text-xs sm:text-sm leading-relaxed">
+                <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-bold text-primary">{feature.title}</h3>
+                <p className="text-primary/70 text-[11px] min-[375px]:text-xs sm:text-sm md:text-base leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -734,24 +734,24 @@ const Home: React.FC = () => {
         </section>
 
       {/* Expo Highlights Section */}
-      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 relative z-10 bg-[#f8f7f6]">
-        <div className="max-w-7xl mx-auto w-full py-8">
+      <section className="min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 bg-[#f8f7f6]">
+        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#2c2c2c] mb-3 sm:mb-4">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Premium Destinations
             </h2>
-            <p className="text-[#5a5a5a] text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto px-4">
+            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-2xl mx-auto px-2 min-[375px]:px-4">
               Curated selection of India's most promising real estate markets
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8">
             {[
               {
                 city: 'Mumbai',
@@ -789,41 +789,41 @@ const Home: React.FC = () => {
                     },
                   },
                 }}
-                className="rounded-2xl p-8"
+                className="rounded-xl min-[375px]:rounded-2xl p-5 min-[375px]:p-6 sm:p-8"
                 style={glassStyle}
               >
-                <h3 className="text-2xl font-medium text-[#2c2c2c] mb-2">
+                <h3 className="text-xl min-[375px]:text-2xl sm:text-3xl font-medium text-[#2c2c2c] mb-1.5 min-[375px]:mb-2">
                   {highlight.city}
                 </h3>
-                <div className="text-[#C5A059] text-lg font-medium mb-4">
+                <div className="text-[#C5A059] text-base min-[375px]:text-lg sm:text-xl font-medium mb-3 min-[375px]:mb-4">
                   {highlight.roi} ROI Potential
                 </div>
-                <p className="text-[#5a5a5a] text-sm leading-relaxed mb-6">
+                <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base leading-relaxed mb-4 min-[375px]:mb-5 sm:mb-6">
                   {highlight.description}
                 </p>
-                <div className="pt-4 border-t border-[#e0e0e0]">
-                  <p className="text-xs text-[#8a8a8a] uppercase tracking-wider mb-2">
+                <div className="pt-3 min-[375px]:pt-4 border-t border-[#e0e0e0]">
+                  <p className="text-[10px] min-[375px]:text-xs text-[#8a8a8a] uppercase tracking-wider mb-1.5 min-[375px]:mb-2">
                     Trusted Developers
                   </p>
-                  <p className="text-sm text-[#5a5a5a] font-light">
+                  <p className="text-xs min-[375px]:text-sm text-[#5a5a5a] font-light">
                     {highlight.developers}
                   </p>
                 </div>
               </motion.div>
             ))}
           </div>
-          <div className="max-w-7xl mx-auto w-full py-8">
+          <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
+            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-[#2c2c2c] mb-3 sm:mb-4">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Trusted Partners
             </h2>
-            <p className="text-[#5a5a5a] text-sm sm:text-base md:text-lg font-light px-4">
+            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light px-2 min-[375px]:px-4">
               India's most respected real estate developers
             </p>
           </motion.div>
