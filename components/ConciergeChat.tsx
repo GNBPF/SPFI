@@ -27,21 +27,58 @@ const ConciergeChat: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-4 min-[375px]:bottom-6 right-4 min-[375px]:right-6 z-50 flex items-center justify-center gap-2 h-12 min-[375px]:h-14 w-12 min-[375px]:w-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] hover:scale-105 transition-all duration-300 hover:w-auto hover:px-4 min-[375px]:hover:px-6 overflow-hidden group"
         aria-label="Open Concierge Chat"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ 
+          scale: 1.05,
+          transition: { duration: 0.2, ease: "easeOut" }
+        }}
+        whileTap={{ 
+          scale: 0.95,
+          transition: { duration: 0.1 }
+        }}
+        animate={{
+          boxShadow: isOpen 
+            ? "0_0_25px_rgba(197,160,89,0.5)" 
+            : "0_0_15px_rgba(197,160,89,0.3)"
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 20
+        }}
       >
-        <span className="material-symbols-outlined text-primary text-xl min-[375px]:text-2xl flex-shrink-0">support_agent</span>
-        <span className="max-w-0 overflow-hidden whitespace-nowrap text-primary font-bold group-hover:max-w-xs transition-all duration-300 text-xs min-[375px]:text-sm">Concierge</span>
+        <motion.span 
+          className="material-symbols-outlined text-primary text-xl min-[375px]:text-2xl flex-shrink-0"
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          support_agent
+        </motion.span>
+        <motion.span 
+          className="overflow-hidden whitespace-nowrap text-primary font-bold text-xs min-[375px]:text-sm"
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ 
+            width: isOpen ? "auto" : "0",
+            opacity: isOpen ? 1 : 0
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          Concierge
+        </motion.span>
       </motion.button>
 
       {/* Chat Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: -400 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -400 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            initial={{ opacity: 0, x: 400, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 400, scale: 0.9 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 25,
+              duration: 0.4
+            }}
             className="fixed bottom-20 min-[375px]:bottom-24 right-4 min-[375px]:right-6 z-50 w-[calc(100vw-2rem)] min-[375px]:w-[90vw] max-w-md h-[60vh] min-[375px]:h-[70vh] max-h-[500px] min-[375px]:max-h-[600px] bg-white rounded-xl min-[375px]:rounded-2xl shadow-2xl border border-accent/20 overflow-hidden flex flex-col"
           >
             {/* Header */}

@@ -18,16 +18,16 @@ const Concierge: React.FC = () => {
 
   const visitorTypes = [
     {
-      id: 'journalist',
-      title: 'Journalist & Social Media Influencer',
-      icon: 'article',
-      description: 'Media professionals and content creators covering the event',
-      color: 'from-blue-500/20 to-purple-500/20',
-      borderColor: 'border-blue-400/30',
-      iconBg: 'bg-blue-500/10',
-      iconColor: 'text-blue-400',
-      link: '/concierge/journalist',
-      image: '/media.webp',
+      id: 'visitor',
+      title: 'Visitor',
+      icon: 'person',
+      description: 'General attendees interested in exploring opportunities',
+      color: 'from-green-500/20 to-emerald-500/20',
+      borderColor: 'border-green-400/30',
+      iconBg: 'bg-green-500/10',
+      iconColor: 'text-green-400',
+      link: '/concierge/visitor',
+      image: '/visitor.jpg',
     },
     {
       id: 'exhibitor',
@@ -42,16 +42,16 @@ const Concierge: React.FC = () => {
       image: '/Exhibitor.webp',
     },
     {
-      id: 'visitor',
-      title: 'Visitor',
-      icon: 'person',
-      description: 'General attendees interested in exploring opportunities',
-      color: 'from-green-500/20 to-emerald-500/20',
-      borderColor: 'border-green-400/30',
-      iconBg: 'bg-green-500/10',
-      iconColor: 'text-green-400',
-      link: '/concierge/visitor',
-      image: '/visitor.jpg',
+      id: 'journalist',
+      title: 'Journalist & Social Media Influencer',
+      icon: 'article',
+      description: 'Media professionals and content creators covering the event',
+      color: 'from-blue-500/20 to-purple-500/20',
+      borderColor: 'border-blue-400/30',
+      iconBg: 'bg-blue-500/10',
+      iconColor: 'text-blue-400',
+      link: '/concierge/journalist',
+      image: '/media.webp',
     },
   ];
 
@@ -87,8 +87,18 @@ const Concierge: React.FC = () => {
                 key={type.id}
                 onClick={(e) => {
                   if (isMobile) {
+                    // Prevent any default behavior
                     e.preventDefault();
-                    setExpandedId(expandedId === type.id ? null : type.id);
+                    e.stopPropagation();
+                    
+                    // Check if the click was on the Link element
+                    const target = e.target as HTMLElement;
+                    const clickedLink = target.closest('a');
+                    
+                    // Only expand/collapse if NOT clicking on the link
+                    if (!clickedLink) {
+                      setExpandedId(expandedId === type.id ? null : type.id);
+                    }
                   }
                 }}
                 onMouseEnter={() => !isMobile && setHoveredId(type.id)}
@@ -96,7 +106,7 @@ const Concierge: React.FC = () => {
                 className={`
                   relative h-full rounded-[16px] min-[375px]:rounded-[18px] sm:rounded-[20px] md:rounded-[25px] lg:rounded-[30px] xl:rounded-[35px] 2xl:rounded-[40px] overflow-hidden 
                   transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] 
-                  cursor-pointer group touch-manipulation
+                  cursor-pointer group touch-manipulation select-none
                   ${isActive 
                     ? isMobile 
                       ? 'flex-[10]' 
@@ -142,12 +152,23 @@ const Concierge: React.FC = () => {
                   <Link
                     to={type.link}
                     onClick={(e) => {
+                      // Always stop propagation to prevent card click
+                      e.stopPropagation();
+                      
+                      // On mobile, only allow navigation if card is expanded
                       if (isMobile) {
-                        e.stopPropagation();
+                        if (expandedId !== type.id) {
+                          // If card is not expanded, prevent navigation and expand it
+                          e.preventDefault();
+                          setExpandedId(type.id);
+                          return;
+                        }
+                        // If card is expanded, allow navigation
                       }
+                      // On desktop, always allow navigation
                     }}
-                    className={`flex items-center gap-2 text-accent font-semibold text-xs min-[375px]:text-sm sm:text-base transition-opacity duration-500 delay-200 ${
-                      isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                    className={`flex items-center gap-2 text-accent font-semibold text-xs min-[375px]:text-sm sm:text-base transition-opacity duration-500 delay-200 z-20 relative ${
+                      isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto'
                     }`}
                   >
                     <span className="relative">
