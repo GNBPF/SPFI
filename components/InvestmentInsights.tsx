@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 
 const InvestmentInsights: React.FC = () => {
+  const [isRequestingAccess, setIsRequestingAccess] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isBooking, setIsBooking] = useState(false);
+
+  const handleRequestAccess = async () => {
+    setIsRequestingAccess(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsRequestingAccess(false);
+    // In production, this would redirect to registration or open a modal
+    window.location.href = '/concierge';
+  };
+
+  const handleViewShowreel = () => {
+    // In production, this would open a video modal or navigate to video page
+    // For now, scroll to a section or show a message
+    alert('Showreel coming soon! This will display a video showcase of the event.');
+  };
+
+  const handleDownloadPDF = async () => {
+    setIsDownloading(true);
+    // Simulate PDF download
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsDownloading(false);
+    // In production, this would trigger actual PDF download
+    alert('PDF download started! In production, this will download the full financial report.');
+  };
+
+  const handleBookWealthManager = async () => {
+    setIsBooking(true);
+    // Simulate booking process
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsBooking(false);
+    // In production, this would open a booking form or redirect
+    window.location.href = '/concierge';
+  };
   return (
     <div className="bg-primary text-cream antialiased min-h-screen flex flex-col selection:bg-accent selection:text-white font-public overflow-x-hidden w-full">
       
@@ -12,12 +48,19 @@ const InvestmentInsights: React.FC = () => {
 
       {/* Hero Section - Dubai Edition */}
       <section className="relative w-full min-h-screen flex items-center justify-center pt-20 min-[375px]:pt-22 sm:pt-24 md:pt-28 lg:pt-32 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden">
-        {/* Background Image with Subtle Darkening */}
-        <div className="absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-            style={{ backgroundImage: "url('/page2.webp')" }}
-          />
+        {/* Background Video with Subtle Darkening */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/Hero/investmentBg.mp4" type="video/mp4" />
+            {/* Fallback for browsers that don't support video */}
+            <div className="absolute inset-0 bg-primary" />
+          </video>
           <div className="absolute inset-0 bg-black/40" />
         </div>
         
@@ -35,11 +78,22 @@ const InvestmentInsights: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 min-[375px]:gap-4 sm:gap-5 w-full sm:w-auto justify-center px-4">
-            <button className="group flex items-center justify-center h-11 min-[375px]:h-12 sm:h-14 px-6 min-[375px]:px-8 sm:px-10 bg-accent text-primary text-xs min-[375px]:text-sm sm:text-base font-bold rounded-lg shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:bg-[#d4b06d] hover:shadow-[0_0_35px_rgba(197,160,89,0.5)] transition-all transform hover:-translate-y-1 active:translate-y-0 tracking-wide uppercase">
-              <span>Request Access</span>
-              <span className="material-symbols-outlined text-base min-[375px]:text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <button 
+              onClick={handleRequestAccess}
+              disabled={isRequestingAccess}
+              className="group flex items-center justify-center h-11 min-[375px]:h-12 sm:h-14 px-6 min-[375px]:px-8 sm:px-10 bg-accent text-primary text-xs min-[375px]:text-sm sm:text-base font-bold rounded-lg shadow-[0_0_25px_rgba(197,160,89,0.3)] hover:bg-[#d4b06d] hover:shadow-[0_0_35px_rgba(197,160,89,0.5)] transition-all transform hover:-translate-y-1 active:translate-y-0 tracking-wide uppercase disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+              aria-label="Request access to the event"
+            >
+              <span>{isRequestingAccess ? 'Processing...' : 'Request Access'}</span>
+              {!isRequestingAccess && (
+                <span className="material-symbols-outlined text-base min-[375px]:text-lg ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              )}
             </button>
-            <button className="flex items-center justify-center h-11 min-[375px]:h-12 sm:h-14 px-6 min-[375px]:px-8 sm:px-10 border-2 border-cream/30 bg-white/10 backdrop-blur-md text-cream text-xs min-[375px]:text-sm sm:text-base font-medium rounded-lg hover:bg-white/20 hover:border-cream/50 transition-all tracking-wide uppercase">
+            <button 
+              onClick={handleViewShowreel}
+              className="flex items-center justify-center h-11 min-[375px]:h-12 sm:h-14 px-6 min-[375px]:px-8 sm:px-10 border-2 border-cream/30 bg-white/10 backdrop-blur-md text-cream text-xs min-[375px]:text-sm sm:text-base font-medium rounded-lg hover:bg-white/20 hover:border-cream/50 transition-all tracking-wide uppercase"
+              aria-label="View event showreel video"
+            >
               View Showreel
             </button>
           </div>
@@ -88,7 +142,13 @@ const InvestmentInsights: React.FC = () => {
                   <div>
                     <h3 className="text-primary text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-bold mb-1 min-[375px]:mb-2">DoubleTree by Hilton, Dubai</h3>
                     <p className="text-primary/70 text-xs min-[375px]:text-sm mb-2 min-[375px]:mb-3 sm:mb-4">Dubai, United Arab Emirates</p>
-                    <a className="text-accent text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-accent/30 pb-0.5" href="#">
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=DoubleTree+by+Hilton+Dubai" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-accent text-[10px] min-[375px]:text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-accent/30 pb-0.5"
+                      aria-label="Get directions to DoubleTree by Hilton Dubai"
+                    >
                       Get Directions <span className="material-symbols-outlined text-[9px] min-[375px]:text-[10px]">arrow_outward</span>
                     </a>
                   </div>
@@ -436,13 +496,23 @@ const InvestmentInsights: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-              <button className="bg-accent hover:bg-white text-background-base font-bold py-3 px-6 rounded-lg transition-all shadow-glow hover:shadow-lg flex items-center justify-center gap-2 min-w-[180px]">
-                <span className="material-symbols-outlined text-[20px]">download</span>
-                <span>Download PDF</span>
+              <button 
+                onClick={handleDownloadPDF}
+                disabled={isDownloading}
+                className="bg-accent hover:bg-white text-background-base font-bold py-3 px-6 rounded-lg transition-all shadow-glow hover:shadow-lg flex items-center justify-center gap-2 min-w-[180px] disabled:opacity-70 disabled:cursor-not-allowed"
+                aria-label="Download financial report PDF"
+              >
+                <span className="material-symbols-outlined text-[20px]">{isDownloading ? 'hourglass_empty' : 'download'}</span>
+                <span>{isDownloading ? 'Downloading...' : 'Download PDF'}</span>
               </button>
-              <button className="bg-transparent border border-accent/40 hover:bg-accent/10 hover:border-accent text-accent font-medium py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 min-w-[180px]">
-                <span className="material-symbols-outlined text-[20px]">calendar_month</span>
-                <span>Book Wealth Manager</span>
+              <button 
+                onClick={handleBookWealthManager}
+                disabled={isBooking}
+                className="bg-transparent border border-accent/40 hover:bg-accent/10 hover:border-accent text-accent font-medium py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 min-w-[180px] disabled:opacity-70 disabled:cursor-not-allowed"
+                aria-label="Book a consultation with a wealth manager"
+              >
+                <span className="material-symbols-outlined text-[20px]">{isBooking ? 'hourglass_empty' : 'calendar_month'}</span>
+                <span>{isBooking ? 'Processing...' : 'Book Wealth Manager'}</span>
               </button>
             </div>
           </div>

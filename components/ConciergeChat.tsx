@@ -5,6 +5,7 @@ import conciergeQuestions from '../data/conciergeQuestions.json';
 
 const ConciergeChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -25,25 +26,31 @@ const ConciergeChat: React.FC = () => {
       {/* Floating Button - Bottom Right */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 min-[375px]:bottom-6 right-4 min-[375px]:right-6 z-50 flex items-center justify-center gap-2 h-12 min-[375px]:h-14 w-12 min-[375px]:w-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] hover:scale-105 transition-all duration-300 hover:w-auto hover:px-4 min-[375px]:hover:px-6 overflow-hidden group"
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        className="fixed bottom-4 min-[375px]:bottom-6 right-4 min-[375px]:right-6 z-50 flex items-center justify-center gap-2 h-12 min-[375px]:h-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] overflow-hidden"
         aria-label="Open Concierge Chat"
         whileHover={{ 
-          scale: 1.05,
-          transition: { duration: 0.2, ease: "easeOut" }
+          scale: 1.1
         }}
         whileTap={{ 
-          scale: 0.95,
-          transition: { duration: 0.1 }
+          scale: 0.95
         }}
         animate={{
+          width: isHovered || isOpen ? '140px' : '3rem',
+          paddingLeft: isHovered || isOpen ? '1rem' : '0',
+          paddingRight: isHovered || isOpen ? '1rem' : '0',
           boxShadow: isOpen 
             ? "0_0_25px_rgba(197,160,89,0.5)" 
+            : isHovered
+            ? "0_0_30px_rgba(197,160,89,0.6)"
             : "0_0_15px_rgba(197,160,89,0.3)"
         }}
         transition={{
           type: "spring",
-          stiffness: 300,
-          damping: 20
+          stiffness: 400,
+          damping: 25,
+          duration: 0.3
         }}
       >
         <motion.span 
@@ -55,12 +62,16 @@ const ConciergeChat: React.FC = () => {
         </motion.span>
         <motion.span 
           className="overflow-hidden whitespace-nowrap text-primary font-bold text-xs min-[375px]:text-sm"
-          initial={{ width: 0, opacity: 0 }}
           animate={{ 
-            width: isOpen ? "auto" : "0",
-            opacity: isOpen ? 1 : 0
+            maxWidth: isHovered || isOpen ? '100px' : '0px',
+            opacity: isHovered || isOpen ? 1 : 0,
+            marginLeft: isHovered || isOpen ? '0.5rem' : '0'
           }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          transition={{ 
+            duration: 0.3, 
+            ease: "easeInOut",
+            opacity: { duration: 0.2 }
+          }}
         >
           Concierge
         </motion.span>

@@ -293,18 +293,28 @@ const AppleHeroGSAP: React.FC = () => {
             }}
           />
           <div className="absolute inset-0 bg-black/40 z-0" />
-          <div className="relative z-20 flex h-full items-center justify-center">
+          <div className="relative z-20 flex h-full items-end justify-center pb-16 md:pb-20 lg:pb-24 xl:pb-32">
             <div className="s1-text text-center max-w-5xl px-6" style={{ opacity: 1, transform: 'translateY(0)', filter: 'blur(0px)' }}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light italic text-cream leading-tight mb-6" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)' }}>
-                Spectrum Property
-                <br />
-                <span className="not-italic text-accent font-medium" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
-                  Festival India
-                </span>
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl font-light text-cream/95 mb-4 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3)' }}>
-                16–17 May 2026 · Dubai
-              </p>
+              <div className="mb-6 flex justify-center items-center">
+                <img 
+                  src="/logoLight.png" 
+                  alt="Spectrum Property Festival India" 
+                  className="h-16 md:h-24 lg:h-32 xl:h-40 w-auto object-contain"
+                  style={{ filter: 'drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3))' }}
+                />
+              </div>
+              <div className="relative inline-block mb-4">
+                {/* Background light effect */}
+                <div className="absolute inset-0 -inset-x-8 -inset-y-4 bg-gradient-to-r from-transparent via-accent/20 to-transparent blur-2xl opacity-60"></div>
+                <div className="absolute inset-0 -inset-x-4 -inset-y-2 bg-accent/10 blur-xl"></div>
+                
+                {/* Text */}
+                <p className="relative text-xl md:text-2xl lg:text-3xl font-light text-cream tracking-wider" style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3)' }}>
+                  <span className="text-cream font-medium">16–17 May 2026</span>
+                  <span className="mx-3 text-cream/40">·</span>
+                  <span className="text-cream font-medium">Dubai</span>
+                </p>
+              </div>
               <p className="text-base md:text-lg text-cream/90 max-w-2xl mx-auto leading-relaxed" style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3)' }}>
                 Calling all NRIs in Dubai: Discover India's finest real estate opportunities. 
                 <br className="hidden md:block" />

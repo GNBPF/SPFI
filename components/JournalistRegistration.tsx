@@ -47,33 +47,82 @@ const JournalistRegistration: React.FC = () => {
     }));
   };
 
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<Record<keyof FormData, string>> = {};
+
+    if (!formData.applicantType) {
+      newErrors.applicantType = 'Please select an applicant type';
+    }
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
+
+    // Media outlet required for journalists
+    if ((formData.applicantType === 'Journalist' || formData.applicantType === 'Both') && !formData.mediaOutlet.trim()) {
+      newErrors.mediaOutlet = 'Media outlet is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
+    setErrors({});
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitSuccess(false);
-      setFormData({
-        applicantType: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        mediaOutlet: '',
-        designation: '',
-        socialMediaHandles: '',
-        platforms: [],
-        followerCount: '',
-        message: '',
-      });
-    }, 3000);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({
+          applicantType: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          mediaOutlet: '',
+          designation: '',
+          socialMediaHandles: '',
+          platforms: [],
+          followerCount: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      setIsSubmitting(false);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   // Compact Input Component
@@ -85,7 +134,8 @@ const JournalistRegistration: React.FC = () => {
     required = false, 
     value, 
     onChange,
-    className = ""
+    className = "",
+    error
   }: any) => (
     <div className={className}>
       <label htmlFor={name} className="block text-primary/80 font-semibold text-[10px] min-[375px]:text-xs sm:text-xs mb-1 min-[375px]:mb-1.5">
@@ -98,9 +148,20 @@ const JournalistRegistration: React.FC = () => {
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-2.5 min-[375px]:px-3 sm:px-3 py-2 min-[375px]:py-2.5 sm:py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-white text-primary placeholder:text-gray-400 text-xs min-[375px]:text-sm sm:text-sm shadow-sm hover:border-gray-300"
+        className={`w-full px-2.5 min-[375px]:px-3 sm:px-3 py-2 min-[375px]:py-2.5 sm:py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all bg-white text-primary placeholder:text-gray-400 text-xs min-[375px]:text-sm sm:text-sm shadow-sm ${
+          error 
+            ? 'border-red-300 focus:ring-red-200 focus:border-red-400' 
+            : 'border-gray-200 focus:ring-accent/20 focus:border-accent hover:border-gray-300'
+        }`}
         placeholder={placeholder}
+        aria-invalid={error ? 'true' : 'false'}
+        aria-describedby={error ? `${name}-error` : undefined}
       />
+      {error && (
+        <p id={`${name}-error`} className="mt-1 text-xs text-red-600" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 
@@ -172,13 +233,24 @@ const JournalistRegistration: React.FC = () => {
                     required
                     value={formData.applicantType}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-white text-primary text-sm shadow-sm hover:border-gray-300"
+                    className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 transition-all bg-white text-primary text-sm shadow-sm ${
+                      errors.applicantType 
+                        ? 'border-red-300 focus:ring-red-200 focus:border-red-400' 
+                        : 'border-gray-200 focus:ring-accent/20 focus:border-accent hover:border-gray-300'
+                    }`}
+                    aria-invalid={errors.applicantType ? 'true' : 'false'}
+                    aria-describedby={errors.applicantType ? 'applicantType-error' : undefined}
                   >
                     <option value="">Select type</option>
-                    <option value="journalist">Journalist</option>
-                    <option value="influencer">Social Media Influencer</option>
-                    <option value="both">Both (Journalist & Influencer)</option>
+                    <option value="Journalist">Journalist</option>
+                    <option value="Social Media Influencer">Social Media Influencer</option>
+                    <option value="Both">Both (Journalist & Influencer)</option>
                   </select>
+                  {errors.applicantType && (
+                    <p id="applicantType-error" className="mt-1 text-xs text-red-600" role="alert">
+                      {errors.applicantType}
+                    </p>
+                  )}
                 </div>
 
                 {/* Row 1: Name */}
@@ -190,6 +262,7 @@ const JournalistRegistration: React.FC = () => {
                     required 
                     value={formData.firstName}
                     onChange={handleInputChange}
+                    error={errors.firstName}
                   />
                   <InputField 
                     label="Last name" 
@@ -198,6 +271,7 @@ const JournalistRegistration: React.FC = () => {
                     required 
                     value={formData.lastName}
                     onChange={handleInputChange}
+                    error={errors.lastName}
                   />
                 </div>
 
@@ -211,6 +285,7 @@ const JournalistRegistration: React.FC = () => {
                     required 
                     value={formData.email}
                     onChange={handleInputChange}
+                    error={errors.email}
                   />
 
                   <InputField 
@@ -221,15 +296,17 @@ const JournalistRegistration: React.FC = () => {
                     required 
                     value={formData.phone}
                     onChange={handleInputChange}
+                    error={errors.phone}
                   />
                 </div>
 
                 {/* Media Outlet - Required for journalists, optional for influencers */}
                 <InputField 
-                  label={formData.applicantType === 'influencer' ? 'Media Outlet / Brand (Optional)' : 'Media Outlet'}
+                  label={formData.applicantType === 'Social Media Influencer' ? 'Media Outlet / Brand (Optional)' : 'Media Outlet'}
                   name="mediaOutlet" 
-                  placeholder={formData.applicantType === 'influencer' ? 'e.g. Independent Creator, Brand Name' : 'e.g. BBC Sport, TechCrunch'}
-                  required={formData.applicantType === 'journalist' || formData.applicantType === 'both'}
+                  placeholder={formData.applicantType === 'Social Media Influencer' ? 'e.g. Independent Creator, Brand Name' : 'e.g. BBC Sport, TechCrunch'}
+                  required={formData.applicantType === 'Journalist' || formData.applicantType === 'Both'}
+                  error={errors.mediaOutlet}
                   value={formData.mediaOutlet}
                   onChange={handleInputChange}
                 />

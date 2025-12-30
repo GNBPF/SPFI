@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Color mapping for Tailwind classes
 const COLOR_MAP: Record<string, { r: number; g: number; b: number }> = {
@@ -208,6 +208,8 @@ const useBackgroundColor = () => {
 
 const FloatingNav: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   
   const { isLight, isScrolled, navRef } = useBackgroundColor();
@@ -215,7 +217,25 @@ const FloatingNav: React.FC = () => {
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsDropdownOpen(false);
   }, [location]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -306,9 +326,9 @@ const FloatingNav: React.FC = () => {
             >
               Investment Insights
             </Link>
-            <Link 
-              to="/concierge"
-              className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold transition-all ${
+            {/* Registrations Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <div className={`flex items-center rounded-full text-xs lg:text-sm font-semibold transition-all ${
                 isActive('/concierge') || location.pathname.startsWith('/concierge')
                   ? shouldUseLightNav
                     ? 'bg-accent text-primary' 
@@ -316,10 +336,104 @@ const FloatingNav: React.FC = () => {
                   : shouldUseLightNav
                     ? 'bg-accent hover:bg-[#d4b06d] text-primary'
                     : 'bg-accent/90 hover:bg-accent text-primary'
-              }`}
-            >
-              Register
-            </Link>
+              }`}>
+                <Link
+                  to="/concierge"
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="px-3 lg:px-4 py-1.5 lg:py-2 rounded-l-full transition-all"
+                >
+                  Registrations
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
+                  className="px-1.5 lg:px-2 py-1.5 lg:py-2 rounded-r-full transition-all flex items-center justify-center"
+                >
+                  <span className={`material-symbols-outlined text-base transition-transform duration-200 ${
+                    isDropdownOpen ? 'rotate-180' : ''
+                  }`}>
+                    expand_more
+                  </span>
+                </button>
+              </div>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className={`absolute top-full right-0 mt-2 min-w-[200px] rounded-xl shadow-xl border overflow-hidden z-50 ${
+                      shouldUseLightNav
+                        ? 'bg-white border-gray-200/50'
+                        : 'bg-primary/95 backdrop-blur-xl border-white/10'
+                    }`}
+                  >
+                  <div className="py-1">
+                    <Link
+                      to="/concierge/visitor"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className={`block px-4 py-2.5 text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/visitor'
+                          ? shouldUseLightNav
+                            ? 'bg-accent/10 text-accent'
+                            : 'bg-accent/20 text-accent'
+                          : shouldUseLightNav
+                            ? 'text-gray-700 hover:bg-gray-100'
+                            : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">person</span>
+                        <span>Visitors</span>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/concierge/journalist"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className={`block px-4 py-2.5 text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/journalist'
+                          ? shouldUseLightNav
+                            ? 'bg-accent/10 text-accent'
+                            : 'bg-accent/20 text-accent'
+                          : shouldUseLightNav
+                            ? 'text-gray-700 hover:bg-gray-100'
+                            : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">article</span>
+                        <span>Media</span>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/concierge/exhibitor"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className={`block px-4 py-2.5 text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/exhibitor'
+                          ? shouldUseLightNav
+                            ? 'bg-accent/10 text-accent'
+                            : 'bg-accent/20 text-accent'
+                          : shouldUseLightNav
+                            ? 'text-gray-700 hover:bg-gray-100'
+                            : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">storefront</span>
+                        <span>Exhibitors</span>
+                      </div>
+                    </Link>
+                  </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Right Side Actions - Only Mobile Menu Toggle on Mobile */}
@@ -386,17 +500,105 @@ const FloatingNav: React.FC = () => {
             >
               Investment Insights
             </Link>
-            <Link
-              to="/concierge"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+            {/* Mobile Registrations Dropdown */}
+            <div className="space-y-2">
+              <div className={`flex items-center rounded-xl text-sm font-semibold transition-all overflow-hidden ${
                 isActive('/concierge') || location.pathname.startsWith('/concierge')
                   ? 'bg-accent text-primary'
                   : 'bg-accent hover:bg-[#d4b06d] text-primary'
-              }`}
-            >
-              Register
-            </Link>
+              }`}>
+                <Link
+                  to="/concierge"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsDropdownOpen(false);
+                  }}
+                  className="flex-1 px-4 py-3 transition-all"
+                >
+                  Registrations
+                </Link>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
+                  className="px-3 py-3 transition-all flex items-center justify-center"
+                >
+                  <span className={`material-symbols-outlined text-lg transition-transform duration-200 ${
+                    isDropdownOpen ? 'rotate-180' : ''
+                  }`}>
+                    expand_more
+                  </span>
+                </button>
+              </div>
+              
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                  <div className="space-y-1 pl-4">
+                    <Link
+                      to="/concierge/visitor"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/visitor'
+                          ? 'bg-accent/20 text-accent'
+                          : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">person</span>
+                        <span>Visitors</span>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/concierge/journalist"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/journalist'
+                          ? 'bg-accent/20 text-accent'
+                          : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">article</span>
+                        <span>Media</span>
+                      </div>
+                    </Link>
+                    <Link
+                      to="/concierge/exhibitor"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                        location.pathname === '/concierge/exhibitor'
+                          ? 'bg-accent/20 text-accent'
+                          : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-lg">storefront</span>
+                        <span>Exhibitors</span>
+                      </div>
+                    </Link>
+                  </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
         </motion.div>
