@@ -28,37 +28,84 @@ const ExhibitorRegistration: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof FormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<Record<keyof FormData, string>> = {};
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^[\d\s\-\+\(\)]+$/.test(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number';
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = 'Company name is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
+    setErrors({});
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitSuccess(false);
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        company: '',
-        designation: '',
-        boothNumber: '',
-        numberOfAttendees: '',
-        message: '',
-      });
-    }, 3000);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          designation: '',
+          boothNumber: '',
+          numberOfAttendees: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      setIsSubmitting(false);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   // Compact Input Component
@@ -70,7 +117,8 @@ const ExhibitorRegistration: React.FC = () => {
     required = false, 
     value, 
     onChange,
-    className = ""
+    className = "",
+    error
   }: any) => (
     <div className={className}>
       <label htmlFor={name} className="block text-primary/80 font-semibold text-[10px] min-[375px]:text-xs sm:text-xs mb-1 min-[375px]:mb-1.5">
@@ -83,9 +131,20 @@ const ExhibitorRegistration: React.FC = () => {
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-2.5 min-[375px]:px-3 sm:px-3 py-2 min-[375px]:py-2.5 sm:py-2.5 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all bg-white text-primary placeholder:text-gray-400 text-xs min-[375px]:text-sm sm:text-sm shadow-sm hover:border-gray-300"
+        className={`w-full px-2.5 min-[375px]:px-3 sm:px-3 py-2 min-[375px]:py-2.5 sm:py-2.5 border rounded-md focus:outline-none focus:ring-2 transition-all bg-white text-primary placeholder:text-gray-400 text-xs min-[375px]:text-sm sm:text-sm shadow-sm ${
+          error 
+            ? 'border-red-300 focus:ring-red-200 focus:border-red-400' 
+            : 'border-gray-200 focus:ring-accent/20 focus:border-accent hover:border-gray-300'
+        }`}
         placeholder={placeholder}
+        aria-invalid={error ? 'true' : 'false'}
+        aria-describedby={error ? `${name}-error` : undefined}
       />
+      {error && (
+        <p id={`${name}-error`} className="mt-1 text-xs text-red-600" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 
@@ -155,6 +214,7 @@ const ExhibitorRegistration: React.FC = () => {
                     required 
                     value={formData.firstName}
                     onChange={handleInputChange}
+                    error={errors.firstName}
                   />
                   <InputField 
                     label="Last name" 
@@ -163,6 +223,7 @@ const ExhibitorRegistration: React.FC = () => {
                     required 
                     value={formData.lastName}
                     onChange={handleInputChange}
+                    error={errors.lastName}
                   />
                 </div>
 
@@ -176,6 +237,7 @@ const ExhibitorRegistration: React.FC = () => {
                     required 
                     value={formData.email}
                     onChange={handleInputChange}
+                    error={errors.email}
                   />
 
                   <InputField 
@@ -186,6 +248,7 @@ const ExhibitorRegistration: React.FC = () => {
                     required 
                     value={formData.phone}
                     onChange={handleInputChange}
+                    error={errors.phone}
                   />
                 </div>
 
@@ -197,6 +260,7 @@ const ExhibitorRegistration: React.FC = () => {
                   required
                   value={formData.company}
                   onChange={handleInputChange}
+                  error={errors.company}
                 />
 
                 {/* Designation */}

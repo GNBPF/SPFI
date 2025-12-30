@@ -336,16 +336,23 @@ const AppleHeroGSAP: React.FC = () => {
 
           <div className="relative z-10 flex h-full items-center justify-center">
             <div className="s2-text opacity-0 text-center max-w-4xl px-6">
-              <h1 className="text-5xl md:text-7xl font-light italic text-cream" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3)' }}>
+              <h1 className="text-5xl md:text-7xl font-light italic text-white" style={{ textShadow: '0 6px 30px rgba(0, 0, 0, 0.8), 0 3px 15px rgba(0, 0, 0, 0.6), 0 0 0 rgba(197, 160, 89, 0.3)' }}>
                 Spectrum Property
                 <br />
-                <span className="not-italic text-accent" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
+                <span className="not-italic text-accent font-semibold" style={{ 
+                  textShadow: '0 0 40px rgba(197, 160, 89, 0.8), 0 6px 30px rgba(0, 0, 0, 0.8), 0 3px 15px rgba(0, 0, 0, 0.6)',
+                  filter: 'drop-shadow(0 0 20px rgba(197, 160, 89, 0.6))'
+                }}>
                   Festival India
                 </span>
               </h1>
-              <p className="mt-6 text-sm tracking-wide text-cream/90" style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3)' }}>
-                Where Indian Real Estate Meets Global Capital
-                <br />16–17 May 2026 · Dubai
+              <p className="mt-6 text-base md:text-lg tracking-wide text-white font-medium" style={{ 
+                textShadow: '0 4px 20px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0, 0, 0, 0.5)',
+                letterSpacing: '0.05em'
+              }}>
+                <span className="text-accent font-semibold">Where Indian Real Estate Meets Global Capital</span>
+                <br />
+                <span className="text-white">16–17 May 2026 · Dubai</span>
               </p>
             </div>
           </div>

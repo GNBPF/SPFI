@@ -299,20 +299,6 @@ const FloatingNav: React.FC = () => {
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-2 lg:mr-4 xl:mr-6 2xl:mr-8 min-w-0">
             <Link 
-              to="/"
-              className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-all ${
-                isActive('/')
-                  ? shouldUseLightNav
-                    ? 'bg-accent/10 text-accent' 
-                    : 'bg-white/20 text-cream'
-                  : shouldUseLightNav
-                    ? `${textMuted} hover:bg-gray-100`
-                    : 'text-cream/80 hover:bg-white/10'
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
               to="/investment-insights"
               className={`px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-medium transition-all ${
                 isActive('/investment-insights')
@@ -478,17 +464,6 @@ const FloatingNav: React.FC = () => {
       >
         <div className={`${shouldUseLightNav ? 'bg-white/95' : 'bg-primary/95'} backdrop-blur-xl rounded-2xl shadow-xl border ${shouldUseLightNav ? 'border-gray-200/50' : 'border-white/10'} p-4`}>
           <div className="flex flex-col gap-2">
-            <Link
-              to="/"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                isActive('/')
-                  ? 'bg-accent/10 text-accent'
-                  : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
-              }`}
-            >
-              Home
-            </Link>
             <Link
               to="/investment-insights"
               onClick={() => setIsMobileMenuOpen(false)}
