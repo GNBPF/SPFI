@@ -149,7 +149,7 @@ const ExhibitorRegistration: React.FC = () => {
   );
 
   return (
-    <div className="bg-white text-primary antialiased min-h-screen flex flex-col font-public overflow-x-hidden w-full pt-20 min-[375px]:pt-22 sm:pt-24 md:pt-26 lg:pt-28">
+    <div className="bg-white text-primary antialiased min-h-screen flex flex-col font-public overflow-x-hidden w-full pt-14 min-[320px]:pt-16 min-[375px]:pt-18 sm:pt-20 md:pt-22 lg:pt-24 xl:pt-26">
       
       {/* Main Container */}
       <div className="flex-1 flex flex-col lg:flex-row h-full overflow-hidden">
@@ -178,12 +178,12 @@ const ExhibitorRegistration: React.FC = () => {
 
         {/* Right Side - Form Content */}
         <div className="lg:w-[55%] w-full flex flex-col h-full overflow-y-auto custom-scrollbar">
-          <div className="w-full max-w-xl mx-auto px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 min-[375px]:py-5 sm:py-6 md:py-8 flex flex-col justify-center min-h-full">
+          <div className="w-full max-w-xl mx-auto px-3 min-[320px]:px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-3 min-[320px]:py-4 min-[375px]:py-5 sm:py-6 md:py-8 flex flex-col justify-center min-h-full">
             
             {/* Compact Header */}
-            <div className="mb-4 min-[375px]:mb-5 sm:mb-6 flex flex-col gap-2">
+            <div className="mb-3 min-[320px]:mb-4 min-[375px]:mb-5 sm:mb-6 flex flex-col gap-2">
               <div>
-                <h1 className="text-primary text-2xl min-[375px]:text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
+                <h1 className="text-primary text-xl min-[320px]:text-2xl min-[375px]:text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tight leading-tight">
                   Exhibitor Registration
                 </h1>
                 <p className="text-primary/60 text-xs min-[375px]:text-sm sm:text-sm md:text-base mt-1 min-[375px]:mt-1.5 leading-relaxed">

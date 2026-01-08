@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/fullLogo1.png" />
+    <link rel="apple-touch-icon" href="/fullLogo1.png" />
     <title>SPFI - Spectrum Property Festival India | 16-17 May 2026, Dubai</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -92,15 +94,94 @@
         max-width: 100vw;
       }
       
-      /* Smooth scroll behavior globally */
-      html {
-        scroll-behavior: smooth;
+      /* Responsive improvements for very large screens */
+      @media (min-width: 1920px) {
+        .max-w-7xl {
+          max-width: 1280px;
+        }
       }
       
-      @media (prefers-reduced-motion: no-preference) {
-        html {
-          scroll-behavior: smooth;
+      @media (min-width: 2560px) {
+        .max-w-7xl {
+          max-width: 1440px;
         }
+      }
+      
+      /* Better text scaling for very small screens */
+      @media (max-width: 319px) {
+        html {
+          font-size: 14px;
+        }
+      }
+      
+      /* Ensure touch targets are at least 44x44px for accessibility */
+      @media (max-width: 768px) {
+        button, a, [role="button"] {
+          min-height: 44px;
+          min-width: 44px;
+        }
+      }
+      
+      /* Improve text readability on small screens */
+      @media (max-width: 480px) {
+        body {
+          -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+        }
+      }
+      
+      /* Landscape orientation improvements for mobile */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .min-h-screen {
+          min-height: auto;
+        }
+        
+        section {
+          min-height: auto;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        }
+      }
+      
+      /* Prevent text from being too small on very small screens */
+      @media (max-width: 360px) {
+        html {
+          font-size: 15px;
+        }
+      }
+      
+      /* Better spacing for very large screens */
+      @media (min-width: 1920px) {
+        .container {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+      
+      /* Lenis will handle smooth scrolling, so we disable native smooth scroll */
+      html {
+        scroll-behavior: auto;
+      }
+      
+      /* Optimize for Lenis smooth scroll */
+      html.lenis {
+        height: auto;
+      }
+      
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
+      
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+      
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
+      
+      .lenis.lenis-scrolling iframe {
+        pointer-events: none;
       }
     </style>
 </head>

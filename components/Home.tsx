@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useReducedMotion, useAnimationControls } from 'framer-motion';
 import Footer from './Footer';
 import AppleHeroGSAP from './AppleHero';
@@ -133,12 +134,13 @@ const blurIn = {
 };
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="min-h-screen bg-[#f8f7f6] text-[#2c2c2c] antialiased relative overflow-x-hidden w-full">
       {/* Apple-Style Hero with Scroll-Triggered Fade Transitions */}
-      <div className="relative z-0">
+      <div className="relative" style={{ zIndex: 1 }}>
         <AppleHeroGSAP />
       </div>
 
@@ -151,9 +153,14 @@ const Home: React.FC = () => {
       />
 
       {/* Heritage Meets High Yield Section (from ScreenFour) - Starts after hero */}
-      <section className="relative z-20 bg-cream min-h-screen flex items-center pt-8 min-[375px]:pt-10 sm:pt-12 md:pt-16 lg:pt-20 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-[375px]:gap-10 sm:gap-12 md:gap-14 lg:gap-16 items-center">
+      <section className="relative z-20 bg-cream min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-7 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 items-center">
             {/* Left Visual Panel */}
             <motion.div
               initial="hidden"
@@ -181,9 +188,9 @@ const Home: React.FC = () => {
                   },
                 },
               }}
-              className="flex flex-col gap-6 min-[375px]:gap-7 sm:gap-8 md:gap-10"
+              className="flex flex-col gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-7"
             >
-              <div className="flex flex-col gap-2 min-[375px]:gap-3 sm:gap-4">
+              <div className="flex flex-col gap-1.5 min-[375px]:gap-2 sm:gap-2.5">
                 <h2 className="text-primary text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-[1.1] tracking-tight">
                   Heritage Meets <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#8f6e30] font-semibold">High Yield</span> <br/>
@@ -193,7 +200,7 @@ const Home: React.FC = () => {
 
               <div className="w-12 min-[375px]:w-14 sm:w-16 md:w-20 lg:w-24 h-[2px] bg-accent/40"></div>
 
-              <div className="flex flex-col gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 text-primary/80">
+              <div className="flex flex-col gap-2 min-[375px]:gap-2.5 sm:gap-3 md:gap-4 text-primary/80">
                 <p className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-medium leading-relaxed">
                   Beyond the emotional resonance of returning to your roots lies an undeniable economic truth: India is rising.
                 </p>
@@ -202,7 +209,7 @@ const Home: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 mt-2 min-[375px]:mt-4 border-t border-primary/10 pt-4 min-[375px]:pt-5 sm:pt-6 md:pt-8">
+              <div className="grid grid-cols-2 gap-3 min-[375px]:gap-4 sm:gap-5 md:gap-6 mt-2 min-[375px]:mt-3 border-t border-primary/10 pt-3 min-[375px]:pt-4 sm:pt-5">
                 <div className="flex flex-col gap-0.5 min-[375px]:gap-1">
                   <span className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">7.2%</span>
                   <span className="text-[9px] min-[375px]:text-[10px] sm:text-xs md:text-sm font-semibold text-accent uppercase tracking-wider">GDP Growth Forecast</span>
@@ -213,8 +220,9 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-4 min-[375px]:pt-5 sm:pt-6">
+              <div className="pt-3 min-[375px]:pt-4 sm:pt-5">
                 <motion.button
+                  onClick={() => navigate('/registrations')}
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="group relative inline-flex items-center justify-center px-5 min-[375px]:px-6 sm:px-8 md:px-10 py-2.5 min-[375px]:py-3 sm:py-4 text-[10px] min-[375px]:text-xs sm:text-sm md:text-base font-bold text-primary uppercase tracking-widest border border-primary overflow-hidden transition-all hover:text-cream w-full sm:w-auto"
@@ -229,43 +237,55 @@ const Home: React.FC = () => {
               </div>
             </motion.div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* Combined: Why SPFI Matters & What You'll Explore Section */}
-      <section className="relative min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
             style={{ backgroundImage: "url('/nriBg.webp')" }}
           />
-          <div className="absolute inset-0 bg-white/75" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0 relative z-10"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20 relative z-10">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           {/* Header */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
-            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 leading-tight">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#1a1a1a] mb-2 min-[375px]:mb-3 leading-tight">
               Why SPFI Matters to Investors
             </h2>
-            <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2">
+            <p className="text-[#3a3a3a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2">
               India's real estate market is entering a powerful growth cycle—driven by infrastructure expansion, urban demand, rental yield growth, and policy stability. SPFI gives you direct access to this momentum.
             </p>
           </motion.div>
 
           {/* Combined Layout: Desktop/Tablet - Side by Side, Mobile - Stacked */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-start">
             {/* Left Column: Why SPFI Matters */}
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-primary mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Key Benefits</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 min-[375px]:gap-4 sm:gap-5">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInUp}
+                className="space-y-2 min-[375px]:space-y-2.5 sm:space-y-3 flex-1"
+              >
                 {[
                   {
                     title: 'Discover Pre-Launch Projects',
@@ -284,73 +304,61 @@ const Home: React.FC = () => {
                     description: 'Make informed decisions with credibility and comprehensive information',
                   },
                 ].map((benefit, index) => (
-                  <motion.div
-                    key={benefit.title}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    variants={{
-                      hidden: { opacity: 0, y: motionTokens.distance.medium },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                          duration: motionTokens.duration.normal,
-                          ease: motionTokens.easing,
-                          delay: index * 0.05,
-                        },
-                      },
-                    }}
-                    className="p-3 min-[375px]:p-4 sm:p-5 md:p-6 rounded-lg border border-primary/10 hover:border-accent/30 transition-colors"
-                  >
-                    <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-primary mb-1.5 min-[375px]:mb-2">{benefit.title}</h4>
-                    <p className="text-xs min-[375px]:text-sm sm:text-base text-primary/70 leading-relaxed">{benefit.description}</p>
-                  </motion.div>
+                  <div key={benefit.title}>
+                    <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-primary mb-1">{benefit.title}</h4>
+                    <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg text-primary/80 leading-relaxed">{benefit.description}</p>
+                  </div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Column: What You'll Explore */}
-            <div>
-              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#2c2c2c] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">What You'll Explore</h3>
+            <div className="flex flex-col">
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#1a1a1a] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">What You'll Explore</h3>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeInUp}
-                className="space-y-2.5 min-[375px]:space-y-3 sm:space-y-4 text-xs min-[375px]:text-sm sm:text-base md:text-lg text-[#5a5a5a] leading-relaxed"
+                className="space-y-2 min-[375px]:space-y-2.5 sm:space-y-3 text-xs min-[375px]:text-sm sm:text-base md:text-lg text-[#3a3a3a] leading-relaxed flex-1"
               >
                 <div>
-                  <p className="font-semibold text-[#2c2c2c] mb-1.5">Residential Investments:</p>
+                  <p className="font-semibold text-[#1a1a1a] mb-1">Residential Investments:</p>
                   <p>Luxury homes, Smart apartments, Plotted developments, Gated communities</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#2c2c2c] mb-1.5">Commercial & Income Assets:</p>
+                  <p className="font-semibold text-[#1a1a1a] mb-1">Commercial & Income Assets:</p>
                   <p>Office spaces, Retail assets, Mixed-use developments, Co-working investments</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#2c2c2c] mb-1.5">Emerging Growth Corridors:</p>
+                  <p className="font-semibold text-[#1a1a1a] mb-1">Emerging Growth Corridors:</p>
                   <p>Tier-1 cities, Tier-2 cities, Infrastructure-led future cities, Growth corridors</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#2c2c2c] mb-1.5">Investment Advisory:</p>
+                  <p className="font-semibold text-[#1a1a1a] mb-1">Investment Advisory:</p>
                   <p>Market insights, Price trends, Legal frameworks, Risk mitigation</p>
                 </div>
               </motion.div>
             </div>
           </div>
+          </div>
         </div>
-      </section>
+        </section>
 
       {/* Exclusive Financial Privileges Section */}
-      <section className="bg-primary min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+      <section className="bg-primary min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
             <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-cream mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Exclusive Financial Privileges for Investors
@@ -420,18 +428,24 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
+          </div>
         </div>
-      </section>
+        </section>
 
       {/* Combined: Who Should Attend & Why Trust Us Section */}
-      <section className="bg-white min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+      <section className="bg-white min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
             <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 leading-tight">
               For Serious Investors
@@ -550,12 +564,18 @@ const Home: React.FC = () => {
               </div>
             </motion.div>
           </div>
+          </div>
         </div>
         </section>
 
       {/* Combined: Why Dubai. Why Now. & Event Snapshot Section */}
-      <section className="bg-gradient-to-br from-primary to-[#0a2b22] min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+      <section className="bg-gradient-to-br from-primary to-[#0a2b22] min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-cream">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
             {/* Left Column: Why Dubai. Why Now. */}
             <motion.div
@@ -568,7 +588,7 @@ const Home: React.FC = () => {
               <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-cream mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
                 Why Dubai? Why Now?
               </h2>
-              <p className="text-cream/90 text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light leading-relaxed mb-4 min-[375px]:mb-5 sm:mb-6 md:mb-8">
+              <p className="text-cream/90 text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light leading-relaxed mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">
                 Dubai is the gateway for global Indian investors—and SPFI places India's property potential right where capital lives. With currency advantages, regulatory clarity, and rising demand back home, this is the moment to position yourself ahead of the curve.
               </p>
               
@@ -662,18 +682,24 @@ const Home: React.FC = () => {
               </div>
             </motion.div>
           </div>
+          </div>
         </div>
-        </section>
+      </section>
 
       {/* Why Now Section (from ScreenFour) */}
-      <section className="bg-white min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+      <section className="bg-white min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-t border-primary/10">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
             <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Why Invest Now?
@@ -730,18 +756,24 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
+          </div>
         </div>
-        </section>
+      </section>
 
       {/* Expo Highlights Section */}
-      <section className="min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 bg-[#f8f7f6]">
-        <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+      <section className="min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 bg-[#f8f7f6]">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
             <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Premium Destinations
@@ -751,7 +783,7 @@ const Home: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-[375px]:gap-5 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
             {[
               {
                 city: 'Mumbai',
@@ -789,7 +821,7 @@ const Home: React.FC = () => {
                     },
                   },
                 }}
-                className="rounded-xl min-[375px]:rounded-2xl p-5 min-[375px]:p-6 sm:p-8"
+                className="rounded-xl min-[375px]:rounded-2xl p-5 min-[375px]:p-6 sm:p-8 h-full flex flex-col"
                 style={glassStyle}
               >
                 <h3 className="text-xl min-[375px]:text-2xl sm:text-3xl font-medium text-[#2c2c2c] mb-1.5 min-[375px]:mb-2">
@@ -798,10 +830,10 @@ const Home: React.FC = () => {
                 <div className="text-[#C5A059] text-base min-[375px]:text-lg sm:text-xl font-medium mb-3 min-[375px]:mb-4">
                   {highlight.roi} ROI Potential
                 </div>
-                <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base leading-relaxed mb-4 min-[375px]:mb-5 sm:mb-6">
+                <p className="text-[#5a5a5a] text-xs min-[375px]:text-sm sm:text-base leading-relaxed mb-4 min-[375px]:mb-5 sm:mb-6 flex-grow">
                   {highlight.description}
                 </p>
-                <div className="pt-3 min-[375px]:pt-4 border-t border-[#e0e0e0]">
+                <div className="pt-3 min-[375px]:pt-4 border-t border-[#e0e0e0] mt-auto">
                   <p className="text-[10px] min-[375px]:text-xs text-[#8a8a8a] uppercase tracking-wider mb-1.5 min-[375px]:mb-2">
                     Trusted Developers
                   </p>
@@ -812,13 +844,15 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
-          <div className="max-w-7xl mx-auto w-full py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+          
+          {/* Trusted Partners Section */}
+          <div className="mt-8 sm:mt-10 md:mt-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-6 min-[375px]:mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
             <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#2c2c2c] mb-2 min-[375px]:mb-3 sm:mb-4 leading-tight">
               Trusted Partners
@@ -842,21 +876,26 @@ const Home: React.FC = () => {
               </div>
             </motion.div>
           </div>
+          </div>
+          </div>
         </div>
-        </div>
-        
         </section>
 
 
       {/* The Asset Class Section (from ScreenFive) */}
-      <section className="bg-[#1e1a14] text-white font-display antialiased min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="max-w-7xl mx-auto w-full py-8">
+      <section className="bg-[#1e1a14] text-white font-display antialiased min-h-screen flex flex-col px-4 sm:px-6 md:px-12 lg:px-16 relative z-10">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-6 sm:pb-8 md:pb-10 lg:pb-12 xl:pb-16">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="text-center mb-10 sm:mb-12 md:mb-16"
+            className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-4 xl:mb-5"
           >
             <h2 className="text-white tracking-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight max-w-4xl mx-auto mb-3 sm:mb-4 px-4" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 10px rgba(0, 0, 0, 0.4)' }}>
               The Asset Class: <span className="font-bold text-accent" style={{ textShadow: '0 4px 20px rgba(0, 0, 0, 0.7), 0 2px 10px rgba(0, 0, 0, 0.5)' }}>Unmatched Luxury</span>
@@ -867,8 +906,8 @@ const Home: React.FC = () => {
           </motion.div>
 
           {/* Horizontal Scroll Gallery */}
-          <div className="relative overflow-hidden -mx-6 md:-mx-12 lg:-mx-16 px-6 md:px-12 lg:px-16">
-            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar" id="asset-gallery-scroll">
+          <div className="relative overflow-visible -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-16 px-4 sm:px-6 md:px-12 lg:px-16">
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-6 sm:pb-8 no-scrollbar scroll-smooth" id="asset-gallery-scroll" style={{ scrollPaddingLeft: '0', scrollPaddingRight: '0' }}>
               {[
                 {
                   image: "/showcase/pic1.webp",
@@ -903,7 +942,7 @@ const Home: React.FC = () => {
                       },
                     },
                   }}
-                  className="relative shrink-0 snap-center w-[90vw] sm:w-[85vw] max-w-[700px] md:w-[600px] lg:w-[700px] aspect-[4/3] md:aspect-[21/9] rounded-lg overflow-hidden group border border-white/10 shadow-2xl"
+                  className="relative shrink-0 snap-center w-[80vw] sm:w-[75vw] max-w-[700px] md:w-[600px] lg:w-[700px] aspect-[4/3] md:aspect-[21/9] rounded-lg overflow-hidden group border border-white/10 shadow-2xl"
                 >
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
@@ -942,11 +981,11 @@ const Home: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="bg-accent w-full py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-12 lg:px-20 rounded-2xl mt-8 sm:mt-10 md:mt-12 shadow-[0_-10px_40px_rgba(197,159,89,0.15)]"
+            className="bg-accent w-full py-5 sm:py-6 md:py-8 px-4 sm:px-6 md:px-12 lg:px-20 rounded-2xl mt-6 sm:mt-8 md:mt-10 shadow-[0_-10px_40px_rgba(197,159,89,0.15)]"
           >
             <div className="max-w-[1280px] mx-auto">
-              <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-4 justify-between items-center md:items-start divide-y md:divide-y-0 md:divide-x divide-primary/20">
-                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-4 md:pt-0">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-4 justify-between items-center md:items-start divide-y md:divide-y-0 md:divide-x divide-primary/20">
+                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-3 md:pt-0">
                   <div className="flex items-center gap-2 mb-1 text-primary/80">
                     <span className="material-symbols-outlined text-lg sm:text-xl">trending_up</span>
                     <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">ROI Potential</span>
@@ -954,7 +993,7 @@ const Home: React.FC = () => {
                   <p className="text-primary text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">12-15%</p>
                   <p className="text-primary/90 text-sm sm:text-base md:text-lg font-medium mt-1">Projected Annual Yield</p>
                 </div>
-                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-6 sm:pt-8 md:pt-0">
+                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-4 sm:pt-6 md:pt-0">
                   <div className="flex items-center gap-2 mb-1 text-primary/80">
                     <span className="material-symbols-outlined text-lg sm:text-xl">verified_user</span>
                     <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Ownership</span>
@@ -962,7 +1001,7 @@ const Home: React.FC = () => {
                   <p className="text-primary text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">100%</p>
                   <p className="text-primary/90 text-sm sm:text-base md:text-lg font-medium mt-1">Freehold Ownership</p>
                 </div>
-                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-6 sm:pt-8 md:pt-0">
+                <div className="flex-1 flex flex-col items-center md:items-start px-2 sm:px-4 w-full text-center md:text-left pt-4 sm:pt-6 md:pt-0">
                   <div className="flex items-center gap-2 mb-1 text-primary/80">
                     <span className="material-symbols-outlined text-lg sm:text-xl">handyman</span>
                     <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Management</span>
@@ -973,6 +1012,7 @@ const Home: React.FC = () => {
               </div>
             </div>
           </motion.div>
+          </div>
         </div>
         </section>
         

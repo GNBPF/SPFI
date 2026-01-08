@@ -263,13 +263,13 @@ const FloatingNav: React.FC = () => {
   return (
     <>
       <div 
-        className="fixed top-1.5 min-[375px]:top-2 sm:top-3 md:top-4 left-0 right-0 z-50 flex justify-center pointer-events-none px-2 min-[375px]:px-3 sm:px-4"
+        className="fixed top-1 min-[320px]:top-1.5 min-[375px]:top-2 sm:top-3 md:top-4 left-0 right-0 z-50 flex justify-center pointer-events-none px-1.5 min-[320px]:px-2 min-[375px]:px-3 sm:px-4"
       >
         <motion.nav 
           ref={navRef}
           className="transition-all duration-300 ease-in-out pointer-events-auto opacity-100 w-full"
           style={{ 
-            maxWidth: '1280px',
+            maxWidth: 'min(1280px, 100%)',
           }}
           initial={{ opacity: 0, y: -20 }}
           animate={{ 
@@ -279,7 +279,7 @@ const FloatingNav: React.FC = () => {
           transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
         >
         <div 
-          className={`flex items-center justify-between px-2.5 min-[375px]:px-3 sm:px-4 md:px-5 lg:px-6 py-2 min-[375px]:py-2.5 sm:py-3 rounded-full transition-all duration-300 ${navBgClass}`}
+          className={`flex items-center justify-between px-2 min-[320px]:px-2.5 min-[375px]:px-3 sm:px-4 md:px-5 lg:px-6 py-1.5 min-[320px]:py-2 min-[375px]:py-2.5 sm:py-3 rounded-full transition-all duration-300 ${navBgClass}`}
         >
           {/* Logo */}
           <Link 
@@ -291,9 +291,9 @@ const FloatingNav: React.FC = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
-            className="flex items-center gap-2 min-[375px]:gap-2.5 sm:gap-3 hover:opacity-80 transition-opacity flex-shrink-0"
+            className="flex items-center gap-1.5 min-[320px]:gap-2 min-[375px]:gap-2.5 sm:gap-3 hover:opacity-80 transition-opacity flex-shrink-0 min-w-0"
           >
-            <img src="/SPFILogo.png" alt="SPFI Logo" className="w-12 h-auto sm:w-14 md:w-16 lg:w-[70px]" />
+            <img src="/SPFILogo.png" alt="SPFI Logo" className="w-10 min-[320px]:w-12 h-auto sm:w-14 md:w-16 lg:w-[70px] max-w-[60px] min-[320px]:max-w-none" />
       </Link>
       
           {/* Desktop Navigation Links */}
@@ -427,14 +427,14 @@ const FloatingNav: React.FC = () => {
             {/* Mobile Menu Toggle - Only visible on mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden flex items-center justify-center h-8 min-[375px]:h-9 sm:h-10 w-8 min-[375px]:w-9 sm:w-10 rounded-full transition-all flex-shrink-0 ${
+              className={`lg:hidden flex items-center justify-center h-9 min-[320px]:h-10 min-[375px]:h-11 sm:h-12 w-9 min-[320px]:w-10 min-[375px]:w-11 sm:w-12 rounded-full transition-all flex-shrink-0 touch-manipulation ${
                 shouldUseLightNav
                   ? 'bg-white hover:bg-gray-50 border border-gray-200'
                   : 'bg-white/10 hover:bg-white/20 border border-white/20'
               }`}
               aria-label="Toggle mobile menu"
             >
-              <span className={`material-symbols-outlined text-lg sm:text-xl transition-colors duration-300 ${
+              <span className={`material-symbols-outlined text-base min-[320px]:text-lg sm:text-xl transition-colors duration-300 ${
                 shouldUseLightNav ? 'text-gray-700' : 'text-cream'
               }`}>
                 {isMobileMenuOpen ? 'close' : 'menu'}

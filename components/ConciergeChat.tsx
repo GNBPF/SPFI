@@ -28,7 +28,7 @@ const ConciergeChat: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
-        className="fixed bottom-4 min-[375px]:bottom-6 right-4 min-[375px]:right-6 z-50 flex items-center justify-center gap-2 h-12 min-[375px]:h-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] overflow-hidden"
+        className="fixed bottom-3 min-[320px]:bottom-4 min-[375px]:bottom-6 right-3 min-[320px]:right-4 min-[375px]:right-6 z-50 flex items-center justify-center gap-1.5 min-[320px]:gap-2 h-11 min-[320px]:h-12 min-[375px]:h-14 rounded-full bg-accent shadow-[0_0_15px_rgba(197,160,89,0.3)] overflow-hidden touch-manipulation"
         aria-label="Open Concierge Chat"
         whileHover={{ 
           scale: 1.1
@@ -90,7 +90,7 @@ const ConciergeChat: React.FC = () => {
               damping: 25,
               duration: 0.4
             }}
-            className="fixed bottom-20 min-[375px]:bottom-24 right-4 min-[375px]:right-6 z-50 w-[calc(100vw-2rem)] min-[375px]:w-[90vw] max-w-md h-[60vh] min-[375px]:h-[70vh] max-h-[500px] min-[375px]:max-h-[600px] bg-white rounded-xl min-[375px]:rounded-2xl shadow-2xl border border-accent/20 overflow-hidden flex flex-col"
+            className="fixed bottom-16 min-[320px]:bottom-20 min-[375px]:bottom-24 right-2 min-[320px]:right-3 min-[375px]:right-4 sm:right-6 z-50 w-[calc(100vw-1rem)] min-[320px]:w-[calc(100vw-1.5rem)] min-[375px]:w-[90vw] max-w-md h-[65vh] min-[320px]:h-[60vh] min-[375px]:h-[70vh] max-h-[500px] min-[375px]:max-h-[600px] bg-white rounded-xl min-[375px]:rounded-2xl shadow-2xl border border-accent/20 overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="bg-primary px-6 py-4 flex items-center justify-between">

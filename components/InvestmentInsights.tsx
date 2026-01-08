@@ -47,7 +47,7 @@ const InvestmentInsights: React.FC = () => {
       </div>
 
       {/* Hero Section - Dubai Edition */}
-      <section className="relative w-full min-h-screen flex items-center justify-center pt-20 min-[375px]:pt-22 sm:pt-24 md:pt-28 lg:pt-32 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden">
+      <section className="relative w-full min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 overflow-hidden">
         {/* Background Video with Subtle Darkening */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
@@ -64,8 +64,11 @@ const InvestmentInsights: React.FC = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0 relative z-10"></div>
+        
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto w-full">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center max-w-5xl mx-auto w-full min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20">
           
           
           <h1 className="text-cream text-3xl min-[375px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-[1.05] tracking-tight mb-4 min-[375px]:mb-5 sm:mb-6 md:mb-8 px-2" style={{ textShadow: '0 6px 30px rgba(0, 0, 0, 0.7), 0 3px 15px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3)' }}>
@@ -101,9 +104,15 @@ const InvestmentInsights: React.FC = () => {
       </section>
 
       {/* Event Passport Section */}
-      <section className="min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-cream relative overflow-hidden transition-colors duration-500">
+      <section className="min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-cream relative overflow-hidden transition-colors duration-500">
         <div className="absolute top-0 right-0 w-[400px] min-[375px]:w-[500px] sm:w-[600px] h-[400px] min-[375px]:h-[500px] sm:h-[600px] bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto w-full relative z-10 py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+        
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0 relative z-10"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20 relative z-10">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <div className="flex flex-col lg:flex-row gap-8 min-[375px]:gap-10 sm:gap-12 lg:gap-16 items-start">
             <div className="flex-1 space-y-4 min-[375px]:space-y-5 sm:space-y-6 md:space-y-8">
               <div>
@@ -166,17 +175,24 @@ const InvestmentInsights: React.FC = () => {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* The Experience Timeline Section */}
-      <section className="min-h-screen flex items-center pt-12 min-[375px]:pt-14 sm:pt-16 md:pt-20 lg:pt-24 px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-cream relative border-t border-accent/10">
+      <section className="min-h-screen flex flex-col px-4 min-[375px]:px-5 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-cream relative border-t border-accent/10">
         <div className="absolute top-10 min-[375px]:top-12 sm:top-16 md:top-20 left-4 min-[375px]:left-6 sm:left-8 md:left-10 w-64 min-[375px]:w-80 sm:w-96 h-64 min-[375px]:h-80 sm:h-96 opacity-[0.03] pointer-events-none rotate-90">
           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.4,82.2,23.1,71.6,35.2C61,47.3,51.1,57.8,39.3,65.3C27.5,72.8,13.7,77.3,-0.6,78.3C-14.9,79.4,-29.8,77,-42.6,69.9C-55.4,62.9,-66.1,51.2,-74.3,37.6C-82.5,24,-88.2,8.5,-86.6,-6.3C-85,-21.1,-76.1,-35.2,-64.8,-46.2C-53.5,-57.2,-39.8,-65.1,-26.3,-72.8C-12.8,-80.5,0.5,-88,14.5,-87.6C28.5,-87.2,43.2,-78.9,44.7,-76.4Z" fill="#C5A059" transform="translate(100 100)"></path>
           </svg>
         </div>
-        <div className="max-w-7xl mx-auto w-full relative z-10 py-6 min-[375px]:py-8 sm:py-10 md:py-12">
+        
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0 relative z-10"></div>
+        
+        {/* Content area */}
+        <div className="flex-1 flex items-center min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20 relative z-10">
+          <div className="max-w-7xl mx-auto w-full py-4 min-[375px]:py-5 sm:py-6 md:py-7 lg:py-4 xl:py-5">
           <div className="text-center mb-8 min-[375px]:mb-10 sm:mb-12 md:mb-16">
             <span className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] min-[375px]:text-xs mb-2 min-[375px]:mb-3 block">Curated Itinerary</span>
             <h2 className="text-primary text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-light leading-tight">The Experience</h2>
@@ -228,15 +244,20 @@ const InvestmentInsights: React.FC = () => {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       
       {/* Financial Insights Section */}
-      <section className="min-h-screen flex items-center pt-20 md:pt-24 px-6 md:px-12 lg:px-16 bg-primary relative">
-        <main className="relative z-10 flex-grow max-w-7xl mx-auto w-full py-8">
+      <section className="min-h-screen flex flex-col px-6 md:px-12 lg:px-16 bg-primary relative">
+        {/* Navbar space */}
+        <div className="h-16 sm:h-18 md:h-20 lg:h-24 xl:h-28 flex-shrink-0 relative z-10"></div>
+        
+        {/* Content area */}
+        <main className="relative z-10 flex-1 flex flex-col min-h-0 pb-8 sm:pb-10 md:pb-12 lg:pb-16 xl:pb-20 max-w-7xl mx-auto w-full py-4 lg:py-5">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 md:mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6 sm:mb-8 md:mb-10">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-accent text-xl">analytics</span>
@@ -265,7 +286,7 @@ const InvestmentInsights: React.FC = () => {
         </div>
 
         {/* Top KPI Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           
           {/* KPI 1 */}
           <div className="animate-fade-in-up [animation-delay:100ms] bg-background-surface/80 backdrop-blur-sm rounded-xl p-5 sm:p-6 border border-border-gold hover:border-accent transition-colors duration-300 shadow-card group">
@@ -323,7 +344,7 @@ const InvestmentInsights: React.FC = () => {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 sm:mb-8">
           
           {/* Chart 1: Global Yield */}
           <div className="animate-fade-in-up [animation-delay:200ms] bg-background-surface/50 backdrop-blur-sm rounded-xl p-8 border border-white/5 shadow-card flex flex-col justify-between">
@@ -484,7 +505,7 @@ const InvestmentInsights: React.FC = () => {
         </div>
 
         {/* Bottom CTA Card */}
-        <div className="mt-12 bg-gradient-to-br from-background-surface to-[#0a2b22] rounded-2xl p-8 md:p-12 relative overflow-hidden shadow-2xl border border-white/5 group fade-in-up delay-300">
+        <div className="mt-6 sm:mt-8 md:mt-10 bg-gradient-to-br from-background-surface to-[#0a2b22] rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-2xl border border-white/5 group fade-in-up delay-300">
           <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full border border-accent/10 opacity-30 group-hover:scale-105 transition-transform duration-1000"></div>
           <div className="absolute -right-10 -top-10 w-72 h-72 rounded-full border border-accent/20 opacity-30 group-hover:scale-105 transition-transform duration-1000 delay-75"></div>
           <div className="absolute right-10 top-10 w-40 h-40 rounded-full bg-accent/5 blur-3xl"></div>
