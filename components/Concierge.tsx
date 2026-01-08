@@ -84,7 +84,7 @@ const Concierge: React.FC = () => {
       {/* Registration Type Selection */}
       <section className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 relative z-10">
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-5 lg:gap-6 h-[280px] min-[375px]:h-[300px] sm:h-[320px] md:h-[360px] lg:h-[400px] xl:h-[420px] 2xl:h-[450px] w-full">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 md:gap-5 lg:gap-6 h-[400px] min-[320px]:h-[420px] min-[375px]:h-[450px] sm:h-[480px] md:h-[360px] lg:h-[400px] xl:h-[420px] 2xl:h-[450px] w-full">
               {visitorTypes.map((type) => {
                 const isActive = expandedId === type.id || hoveredId === type.id;
                 
