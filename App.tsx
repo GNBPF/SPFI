@@ -20,10 +20,10 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/investment-insights" element={<InvestmentInsights />} />
-          <Route path="/concierge" element={<Concierge />} />
-          <Route path="/concierge/journalist" element={<JournalistRegistration />} />
-          <Route path="/concierge/exhibitor" element={<ExhibitorRegistration />} />
-          <Route path="/concierge/visitor" element={<VisitorRegistration />} />
+          <Route path="/registrations" element={<Concierge />} />
+          <Route path="/registrations/journalist" element={<JournalistRegistration />} />
+          <Route path="/registrations/exhibitor" element={<ExhibitorRegistration />} />
+          <Route path="/registrations/visitor" element={<VisitorRegistration />} />
         </Routes>
       </Router>
     </div>

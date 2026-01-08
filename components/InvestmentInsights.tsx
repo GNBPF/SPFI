@@ -12,7 +12,7 @@ const InvestmentInsights: React.FC = () => {
     await new Promise(resolve => setTimeout(resolve, 1500));
     setIsRequestingAccess(false);
     // In production, this would redirect to registration or open a modal
-    window.location.href = '/concierge';
+    window.location.href = '/registrations';
   };
 
   const handleViewShowreel = () => {
@@ -36,7 +36,7 @@ const InvestmentInsights: React.FC = () => {
     await new Promise(resolve => setTimeout(resolve, 1500));
     setIsBooking(false);
     // In production, this would open a booking form or redirect
-    window.location.href = '/concierge';
+    window.location.href = '/registrations';
   };
   return (
     <div className="bg-primary text-cream antialiased min-h-screen flex flex-col selection:bg-accent selection:text-white font-public overflow-x-hidden w-full">

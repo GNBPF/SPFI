@@ -106,7 +106,7 @@ const useBackgroundColor = () => {
     }
 
     // Registration pages have light backgrounds (white/green) - need dark navbar
-    if (path.startsWith('/concierge')) {
+    if (path.startsWith('/registrations')) {
       setIsLight(false);
       return;
     }
@@ -242,7 +242,7 @@ const FloatingNav: React.FC = () => {
   };
 
   // Check if we're on a concierge/registration page
-  const isConciergePage = location.pathname.startsWith('/concierge');
+  const isConciergePage = location.pathname.startsWith('/registrations');
 
   // Determine navbar style based on background
   // For concierge pages, always use dark navbar. Otherwise, use light navbar only when scrolled on light backgrounds
@@ -315,7 +315,7 @@ const FloatingNav: React.FC = () => {
             {/* Registrations Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <div className={`flex items-center rounded-full text-xs lg:text-sm font-semibold transition-all ${
-                isActive('/concierge') || location.pathname.startsWith('/concierge')
+                isActive('/registrations') || location.pathname.startsWith('/registrations')
                   ? shouldUseLightNav
                     ? 'bg-accent text-primary' 
                     : 'bg-accent text-primary'
@@ -324,7 +324,7 @@ const FloatingNav: React.FC = () => {
                     : 'bg-accent/90 hover:bg-accent text-primary'
               }`}>
                 <Link
-                  to="/concierge"
+                  to="/registrations"
                   onClick={() => setIsDropdownOpen(false)}
                   className="px-3 lg:px-4 py-1.5 lg:py-2 rounded-l-full transition-all"
                 >
@@ -362,10 +362,10 @@ const FloatingNav: React.FC = () => {
                   >
                   <div className="py-1">
                     <Link
-                      to="/concierge/visitor"
+                      to="/registrations/visitor"
                       onClick={() => setIsDropdownOpen(false)}
                       className={`block px-4 py-2.5 text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/visitor'
+                        location.pathname === '/registrations/visitor'
                           ? shouldUseLightNav
                             ? 'bg-accent/10 text-accent'
                             : 'bg-accent/20 text-accent'
@@ -380,10 +380,10 @@ const FloatingNav: React.FC = () => {
                       </div>
                     </Link>
                     <Link
-                      to="/concierge/journalist"
+                      to="/registrations/journalist"
                       onClick={() => setIsDropdownOpen(false)}
                       className={`block px-4 py-2.5 text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/journalist'
+                        location.pathname === '/registrations/journalist'
                           ? shouldUseLightNav
                             ? 'bg-accent/10 text-accent'
                             : 'bg-accent/20 text-accent'
@@ -398,10 +398,10 @@ const FloatingNav: React.FC = () => {
                       </div>
                     </Link>
                     <Link
-                      to="/concierge/exhibitor"
+                      to="/registrations/exhibitor"
                       onClick={() => setIsDropdownOpen(false)}
                       className={`block px-4 py-2.5 text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/exhibitor'
+                        location.pathname === '/registrations/exhibitor'
                           ? shouldUseLightNav
                             ? 'bg-accent/10 text-accent'
                             : 'bg-accent/20 text-accent'
@@ -478,12 +478,12 @@ const FloatingNav: React.FC = () => {
             {/* Mobile Registrations Dropdown */}
             <div className="space-y-2">
               <div className={`flex items-center rounded-xl text-sm font-semibold transition-all overflow-hidden ${
-                isActive('/concierge') || location.pathname.startsWith('/concierge')
+                isActive('/registrations') || location.pathname.startsWith('/registrations')
                   ? 'bg-accent text-primary'
                   : 'bg-accent hover:bg-[#d4b06d] text-primary'
               }`}>
                 <Link
-                  to="/concierge"
+                  to="/registrations"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     setIsDropdownOpen(false);
@@ -519,13 +519,13 @@ const FloatingNav: React.FC = () => {
                   >
                   <div className="space-y-1 pl-4">
                     <Link
-                      to="/concierge/visitor"
+                      to="/registrations/visitor"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         setIsDropdownOpen(false);
                       }}
                       className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/visitor'
+                        location.pathname === '/registrations/visitor'
                           ? 'bg-accent/20 text-accent'
                           : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
                       }`}
@@ -536,13 +536,13 @@ const FloatingNav: React.FC = () => {
                       </div>
                     </Link>
                     <Link
-                      to="/concierge/journalist"
+                      to="/registrations/journalist"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         setIsDropdownOpen(false);
                       }}
                       className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/journalist'
+                        location.pathname === '/registrations/journalist'
                           ? 'bg-accent/20 text-accent'
                           : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
                       }`}
@@ -553,13 +553,13 @@ const FloatingNav: React.FC = () => {
                       </div>
                     </Link>
                     <Link
-                      to="/concierge/exhibitor"
+                      to="/registrations/exhibitor"
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         setIsDropdownOpen(false);
                       }}
                       className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                        location.pathname === '/concierge/exhibitor'
+                        location.pathname === '/registrations/exhibitor'
                           ? 'bg-accent/20 text-accent'
                           : shouldUseLightNav ? 'text-gray-700 hover:bg-gray-100' : 'text-cream hover:bg-white/10'
                       }`}

@@ -26,7 +26,7 @@ const Concierge: React.FC = () => {
       borderColor: 'border-green-400/30',
       iconBg: 'bg-green-500/10',
       iconColor: 'text-green-400',
-      link: '/concierge/visitor',
+      link: '/registrations/visitor',
       image: '/visitor.jpg',
     },
     {
@@ -38,7 +38,7 @@ const Concierge: React.FC = () => {
       borderColor: 'border-accent/30',
       iconBg: 'bg-accent/10',
       iconColor: 'text-accent',
-      link: '/concierge/exhibitor',
+      link: '/registrations/exhibitor',
       image: '/Exhibitor.webp',
     },
     {
@@ -50,7 +50,7 @@ const Concierge: React.FC = () => {
       borderColor: 'border-blue-400/30',
       iconBg: 'bg-blue-500/10',
       iconColor: 'text-blue-400',
-      link: '/concierge/journalist',
+      link: '/registrations/journalist',
       image: '/media.webp',
     },
   ];
@@ -68,7 +68,7 @@ const Concierge: React.FC = () => {
         <div className="absolute top-0 right-0 w-[400px] min-[375px]:w-[500px] sm:w-[600px] h-[400px] min-[375px]:h-[500px] sm:h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-primary text-3xl min-[375px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-light tracking-tight mb-2 min-[375px]:mb-3 leading-tight">
+            <h1 className="text-primary text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light tracking-tight mb-2 min-[375px]:mb-3 leading-tight">
               Register for <span className="text-accent font-bold font-display italic">SPFI 2026</span>
             </h1>
           </div>
