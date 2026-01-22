@@ -312,11 +312,11 @@ const InvestmentInsights: React.FC = () => {
               <div className="p-2 bg-accent/20 rounded-lg text-accent">
                 <span className="material-symbols-outlined text-lg sm:text-xl">currency_exchange</span>
               </div>
-              <span className="text-[#4ADE80] text-[10px] sm:text-xs font-bold bg-[#4ADE80]/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-[#4ADE80]/20">+22.4% vs 2020</span>
+              <span className="text-[#4ADE80] text-[10px] sm:text-xs font-bold bg-[#4ADE80]/10 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border border-[#4ADE80]/20">+18.2% vs 2020</span>
             </div>
-            <p className="text-text-muted text-xs sm:text-sm font-medium uppercase tracking-wide">USD vs INR Appreciation</p>
+            <p className="text-text-muted text-xs sm:text-sm font-medium uppercase tracking-wide">AED vs INR Appreciation</p>
             <div className="flex items-baseline gap-2 mt-2">
-              <h3 className="text-3xl sm:text-4xl font-bold text-accent tracking-tight">+22.4%</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold text-accent tracking-tight">+18.2%</h3>
               <span className="text-[10px] sm:text-xs text-cream/70">Buying Power</span>
             </div>
             <div className="w-full bg-white/10 h-1.5 rounded-full mt-5 overflow-hidden">
@@ -405,12 +405,12 @@ const InvestmentInsights: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div>
                 <h4 className="text-lg font-bold text-cream mb-1">Currency Buying Power</h4>
-                <p className="text-sm text-text-muted">5 Year Trend: USD / INR Appreciation</p>
+                <p className="text-sm text-text-muted">5 Year Trend: AED / INR Exchange Rate</p>
               </div>
               <div className="flex items-center gap-3">
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-accent">₹92 / $1</p>
-                  <p className="text-xs text-[#4ADE80] font-medium">+12% Forecast</p>
+                  <p className="text-2xl font-bold text-accent">₹22.75 / 1 AED</p>
+                  <p className="text-xs text-[#4ADE80] font-medium">+9% Forecast</p>
                 </div>
               </div>
             </div>

@@ -1,53 +1,30 @@
-import React, { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Crucial: Register the plugin outside the component
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useEffect } from "react";
 
 const AppleHeroGSAP: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scene1Ref = useRef<HTMLDivElement>(null);
-  const scene2Ref = useRef<HTMLDivElement>(null);
-  const scene3Ref = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const SLIDE_DURATION = 10000; // 10 seconds
+  const TOTAL_SLIDES = 3;
 
-  useLayoutEffect(() => {
-    // Create GSAP Context to handle React cleanup automatically
-    const ctx = gsap.context(() => {
-      
-      // Master Timeline for pinning and fading
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=300%", // The scroll distance (3 screens worth)
-          scrub: 1,      // Smooth transition
-          pin: true,     // This stops the page from moving
-          anticipatePin: 1,
-        },
-      });
+  // Auto-advance slides
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % TOTAL_SLIDES);
+    }, SLIDE_DURATION);
 
-      // Step 1: Fade Scene 1 out while Scene 2 comes in
-      tl.to(scene1Ref.current, { opacity: 0, ease: "none" }, 0)
-        .fromTo(scene2Ref.current, { opacity: 0 }, { opacity: 1, ease: "none" }, 0);
-
-      // Step 2: Fade Scene 2 out while Scene 3 comes in
-      tl.to(scene2Ref.current, { opacity: 0, ease: "none" }, 1)
-        .fromTo(scene3Ref.current, { opacity: 0 }, { opacity: 1, ease: "none" }, 1);
-
-    }, containerRef);
-
-    return () => ctx.revert(); // Clean up on unmount
+    return () => clearInterval(timer);
   }, []);
 
+  const goToSlide = (index: number) => {
+    setActiveSlide(index);
+  };
+
   return (
-    /* Main Container: Needs bg-black so there is never a white screen */
-    <div ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden">
-      
+    <div className="relative w-full h-screen bg-black overflow-hidden">
       {/* SCENE 1 */}
       <section 
-        ref={scene1Ref}
-        className="absolute inset-0 h-full w-full flex items-center justify-center z-30"
+        className={`absolute inset-0 h-full w-full flex items-center justify-center transition-opacity duration-1000 ${
+          activeSlide === 0 ? 'opacity-100 z-30' : 'opacity-0 z-10'
+        }`}
       >
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700"
@@ -78,8 +55,9 @@ const AppleHeroGSAP: React.FC = () => {
 
       {/* SCENE 2 */}
       <section 
-        ref={scene2Ref}
-        className="absolute inset-0 h-full w-full flex items-center justify-center z-20 opacity-0"
+        className={`absolute inset-0 h-full w-full flex items-center justify-center transition-opacity duration-1000 ${
+          activeSlide === 1 ? 'opacity-100 z-30' : 'opacity-0 z-10'
+        }`}
       >
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -100,8 +78,9 @@ const AppleHeroGSAP: React.FC = () => {
 
       {/* SCENE 3 */}
       <section 
-        ref={scene3Ref}
-        className="absolute inset-0 h-full w-full flex items-center justify-center z-10 opacity-0"
+        className={`absolute inset-0 h-full w-full flex items-center justify-center transition-opacity duration-1000 ${
+          activeSlide === 2 ? 'opacity-100 z-30' : 'opacity-0 z-10'
+        }`}
       >
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -118,6 +97,26 @@ const AppleHeroGSAP: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* Navigation Dots */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-2">
+        {[0, 1, 2].map((index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`transition-all duration-300 rounded-full ${
+              activeSlide === index
+                ? 'w-6 h-1.5 bg-white'
+                : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/70'
+            }`}
+            style={{
+              minWidth: activeSlide === index ? '24px' : '6px',
+              minHeight: '6px'
+            }}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

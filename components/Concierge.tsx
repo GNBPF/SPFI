@@ -112,10 +112,10 @@ const Concierge: React.FC = () => {
                   className={`flex flex-col ${
                     isActive 
                       ? isMobile 
-                        ? 'flex-[10]' 
+                        ? 'flex-[3.5]' 
                         : 'flex-[6] md:flex-[3] lg:flex-[3] xl:flex-[3]'
                       : isMobile
-                        ? 'flex-[1]'
+                        ? 'flex-[1.2]'
                         : 'flex-[2] md:flex-[1.2] lg:flex-[1.2] xl:flex-[1.2] hover:flex-[1.5] lg:hover:flex-[1.5]'
                   } transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] group`}
                 >

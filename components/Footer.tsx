@@ -33,29 +33,23 @@ const Footer: React.FC = () => {
           {/* Links */}
           <div className="flex flex-wrap gap-6 min-[320px]:gap-8 sm:gap-10 md:gap-12 lg:gap-24 w-full md:w-auto">
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h5 className="text-accent text-xs font-bold uppercase tracking-widest">Explore</h5>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">Why India?</a>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">Exhibitors</a>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">Concierge</a>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">RSVP</a>
+              <h5 className="text-accent text-xs font-bold uppercase tracking-widest">Quick Links</h5>
+              <Link className="text-xs sm:text-sm hover:text-accent transition-colors" to="/">Home</Link>
+              <Link className="text-xs sm:text-sm hover:text-accent transition-colors" to="/investment-insights">Investment Insights</Link>
+              <Link className="text-xs sm:text-sm hover:text-accent transition-colors" to="/registrations">Registrations</Link>
+              <Link className="text-xs sm:text-sm hover:text-accent transition-colors" to="/registrations/exhibitor">Exhibitor Registration</Link>
             </div>
             <div className="flex flex-col gap-3 sm:gap-4">
-              <h5 className="text-accent text-xs font-bold uppercase tracking-widest">Legal</h5>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">Privacy Policy</a>
-              <a className="text-xs sm:text-sm hover:text-accent transition-colors" href="#">Terms of Service</a>
-            </div>
-            <div className="flex flex-col gap-3 sm:gap-4">
-              <h5 className="text-accent text-xs font-bold uppercase tracking-widest">Connect</h5>
-              <div className="flex gap-3 sm:gap-4">
-                <a className="text-cream hover:text-accent transition-colors text-lg sm:text-xl" href="#" aria-label="YouTube">
-                  <span className="material-symbols-outlined">smart_display</span>
-                </a>
-                <a className="text-cream hover:text-accent transition-colors text-lg sm:text-xl" href="#" aria-label="Instagram">
-                  <span className="material-symbols-outlined">photo_camera</span>
-                </a>
-                <a className="text-cream hover:text-accent transition-colors text-lg sm:text-xl" href="#" aria-label="Website">
-                  <span className="material-symbols-outlined">public</span>
-                </a>
+              <h5 className="text-accent text-xs font-bold uppercase tracking-widest">Event Info</h5>
+              <div className="flex flex-col gap-2 sm:gap-3 text-xs sm:text-sm text-cream/80">
+                <p className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-accent text-sm">calendar_month</span>
+                  16-17 May 2026
+                </p>
+                <p className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-accent text-sm">location_on</span>
+                  Dubai, UAE
+                </p>
               </div>
             </div>
           </div>

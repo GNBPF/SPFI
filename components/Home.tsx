@@ -249,7 +249,7 @@ const Home: React.FC = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
             style={{ backgroundImage: "url('/nriBg.webp')" }}
           />
-          <div className="absolute inset-0 bg-white/60" />
+          <div className="absolute inset-0 bg-black/55" />
         </div>
         
         {/* Navbar space */}
@@ -266,10 +266,10 @@ const Home: React.FC = () => {
             variants={fadeInUp}
             className="text-center mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6 lg:mb-3 xl:mb-4"
           >
-            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-[#1a1a1a] mb-2 min-[375px]:mb-3 leading-tight">
+            <h2 className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-cream mb-2 min-[375px]:mb-3 leading-tight">
               Why SPFI Matters to Investors
             </h2>
-            <p className="text-[#3a3a3a] text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2">
+            <p className="text-cream/80 text-xs min-[375px]:text-sm sm:text-base md:text-lg font-light max-w-3xl mx-auto px-2">
               India's real estate market is entering a powerful growth cycle—driven by infrastructure expansion, urban demand, rental yield growth, and policy stability. SPFI gives you direct access to this momentum.
             </p>
           </motion.div>
@@ -278,7 +278,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 min-[375px]:gap-8 sm:gap-10 lg:gap-12 xl:gap-16 items-start">
             {/* Left Column: Why SPFI Matters */}
             <div className="flex flex-col">
-              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-primary mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Key Benefits</h3>
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-cream mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">Key Benefits</h3>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -305,8 +305,8 @@ const Home: React.FC = () => {
                   },
                 ].map((benefit, index) => (
                   <div key={benefit.title}>
-                    <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-primary mb-1">{benefit.title}</h4>
-                    <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg text-primary/80 leading-relaxed">{benefit.description}</p>
+                    <h4 className="text-sm min-[375px]:text-base sm:text-lg md:text-xl font-semibold text-cream mb-1">{benefit.title}</h4>
+                    <p className="text-xs min-[375px]:text-sm sm:text-base md:text-lg text-cream/70 leading-relaxed">{benefit.description}</p>
                   </div>
                 ))}
               </motion.div>
@@ -314,28 +314,28 @@ const Home: React.FC = () => {
 
             {/* Right Column: What You'll Explore */}
             <div className="flex flex-col">
-              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-[#1a1a1a] mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">What You'll Explore</h3>
+              <h3 className="text-base min-[375px]:text-lg sm:text-xl md:text-2xl font-semibold text-cream mb-3 min-[375px]:mb-4 sm:mb-5 md:mb-6">What You'll Explore</h3>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={fadeInUp}
-                className="space-y-2 min-[375px]:space-y-2.5 sm:space-y-3 text-xs min-[375px]:text-sm sm:text-base md:text-lg text-[#3a3a3a] leading-relaxed flex-1"
+                className="space-y-2 min-[375px]:space-y-2.5 sm:space-y-3 text-xs min-[375px]:text-sm sm:text-base md:text-lg text-cream/70 leading-relaxed flex-1"
               >
                 <div>
-                  <p className="font-semibold text-[#1a1a1a] mb-1">Residential Investments:</p>
+                  <p className="font-semibold text-cream mb-1">Residential Investments:</p>
                   <p>Luxury homes, Smart apartments, Plotted developments, Gated communities</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#1a1a1a] mb-1">Commercial & Income Assets:</p>
+                  <p className="font-semibold text-cream mb-1">Commercial & Income Assets:</p>
                   <p>Office spaces, Retail assets, Mixed-use developments, Co-working investments</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#1a1a1a] mb-1">Emerging Growth Corridors:</p>
+                  <p className="font-semibold text-cream mb-1">Emerging Growth Corridors:</p>
                   <p>Tier-1 cities, Tier-2 cities, Infrastructure-led future cities, Growth corridors</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-[#1a1a1a] mb-1">Investment Advisory:</p>
+                  <p className="font-semibold text-cream mb-1">Investment Advisory:</p>
                   <p>Market insights, Price trends, Legal frameworks, Risk mitigation</p>
                 </div>
               </motion.div>

@@ -7,16 +7,38 @@ const ConciergeChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const chatContentRef = useRef<HTMLDivElement>(null);
 
+  // Prevent background scroll when modal is open
   useEffect(() => {
-    if (isOpen && chatEndRef.current) {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
-  }, [isOpen, selectedQuestion]);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const handleQuestionClick = (id: number) => {
+    // Save current scroll position before opening question
+    if (chatContentRef.current) {
+      setSavedScrollPosition(chatContentRef.current.scrollTop);
+    }
     setSelectedQuestion(id);
+  };
+
+  const handleBackToQuestions = () => {
+    setSelectedQuestion(null);
+    // Restore scroll position after going back
+    setTimeout(() => {
+      if (chatContentRef.current) {
+        chatContentRef.current.scrollTop = savedScrollPosition;
+      }
+    }, 0);
   };
 
   const selectedQnA = conciergeQuestions.questions.find(q => q.id === selectedQuestion);
@@ -77,6 +99,21 @@ const ConciergeChat: React.FC = () => {
         </motion.span>
       </motion.button>
 
+      {/* Backdrop Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+            onClick={() => setIsOpen(false)}
+            style={{ touchAction: 'none' }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Chat Panel */}
       <AnimatePresence>
         {isOpen && (
@@ -91,6 +128,7 @@ const ConciergeChat: React.FC = () => {
               duration: 0.4
             }}
             className="fixed bottom-16 min-[320px]:bottom-20 min-[375px]:bottom-24 right-2 min-[320px]:right-3 min-[375px]:right-4 sm:right-6 z-50 w-[calc(100vw-1rem)] min-[320px]:w-[calc(100vw-1.5rem)] min-[375px]:w-[90vw] max-w-md h-[65vh] min-[320px]:h-[60vh] min-[375px]:h-[70vh] max-h-[500px] min-[375px]:max-h-[600px] bg-white rounded-xl min-[375px]:rounded-2xl shadow-2xl border border-accent/20 overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="bg-primary px-6 py-4 flex items-center justify-between">
@@ -113,7 +151,17 @@ const ConciergeChat: React.FC = () => {
             </div>
 
             {/* Chat Content */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+            <div 
+              ref={chatContentRef} 
+              className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar"
+              style={{ 
+                overscrollBehavior: 'contain',
+                WebkitOverflowScrolling: 'touch',
+                touchAction: 'pan-y'
+              }}
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
               {!selectedQuestion ? (
                 <>
                   <div className="text-center mb-6">
@@ -142,7 +190,7 @@ const ConciergeChat: React.FC = () => {
                 <>
                   {/* Back Button */}
                   <button
-                    onClick={() => setSelectedQuestion(null)}
+                    onClick={handleBackToQuestions}
                     className="flex items-center gap-2 text-accent hover:text-primary transition-colors mb-4 text-sm font-medium"
                   >
                     <span className="material-symbols-outlined text-lg">arrow_back</span>
@@ -173,7 +221,6 @@ const ConciergeChat: React.FC = () => {
                   </div>
                 </>
               )}
-              <div ref={chatEndRef} />
             </div>
           </motion.div>
         )}
